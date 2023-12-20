@@ -10,63 +10,195 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title> My News Feed</title>
     <style>
-       
+        .custom-txt-color{
+            color: #01293dff;
+        }
         .custom-bg-color {
-            background-color: #01293dff; /* Your desired color code */
+            background-color: #01293dff; 
         }
     </style>
 </head>
 <body class="custom-bg-color">
 
-    <div class="container-md d-flex flex-column p-4">
+    <div class="container-sm d-flex flex-column p-4   d-flex  justify-content-between">
 
         <!--site intro-->
-        <h1 class="text-white d-flex justify-content-center ">News Feed</h1>
+        <h1 class="text-white d-flex justify-content-center ">
+            News Feed
+        </h1>
 
-        <div class="user-utilities p-3 d-flex  justify-content-between bg-light">
-            <div class="left-wrapper">
-                <label for="iconTypeSelect" class="form-label">
-                    Filtra per tags
+        <div class="user-utilities p-3 bg-light">
+            <div class="container-sm  d-flex  justify-content-between">
+                <div class="left-wrapper">
+                    <label for="iconTypeSelect" class="form-label">
+                        Filtra per tags
+                    </label>
+                    <select id="iconTypeSelect" class="form-select">
+    
+                       <option value="all">Tutti i tags</option>
+                       <option value="animal">Politica</option>
+                       <option value="vegetable">Geo</option>
+                       <option value="user">Tech</option>
+                       <option value="user">Viaggi</option>
+                       <option value="user">Cucina</option>
+    
+                    </select>
+               </div>
+               <!--flex item 1 end-->
+               <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Solo news salvate
                 </label>
-                <select id="iconTypeSelect" class="form-select">
+               </div>
+               <!--flex item 2 end-->
 
-                   <option value="all">Tutti i tags</option>
-                   <option value="animal">Politica</option>
-                   <option value="vegetable">Geo</option>
-                   <option value="user">Tech</option>
-                   <option value="user">Viaggi</option>
-                   <option value="user">Cucina</option>
-
-                </select>
-           </div>
-           <!--flex item 1 end-->
-           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Solo news salvate
-            </label>
-           </div>
-           <!--flex item 2 end-->
+            </div>
+            
         </div>
 
         <!--main section of site-->
-        <div class="container-md mt-3 bg-light">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi similique quidem veniam debitis molestiae natus, quaerat architecto? Tempora sint commodi architecto aperiam numquam. Odit, harum ratione, animi distinctio optio nam consequatur consequuntur minus voluptates dolorem, qui obcaecati adipisci eos architecto!
+        <div class="container-sm mt-3 bg-light p-3">
+
+            <div class="container-sm d-flex justify-content-between flex-nowrap">
+
+                <h4 class="font-weight-bold">
+                    Scoperta di una nuova specie di papera di gomma
+                </h4>
+                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color">
+
+                </i>
+               
+            </div>
+            <div class="container-sm d-flex flex-column">
+                <article>
+                    <div class="author">
+                        pubblicato da Dina Rossi
+                    </div>
+                    <div class="date">
+                        in data 15/01/2023
+                    </div>
+                </article>
+    
+                <!--end of top section-->
+    
+                <p>
+                    Un breve articolo sulla recente scoerta di una specie di papera di gomma mai vista prima.
+                </p>
+    
+                <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
+                <!--end of bottom section-->
+            </div>
+
+            
         </div>
         <!--end of 1st post-->
 
-        <div class="container-md mt-3 bg-light">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt dolore, esse non delectus tempore consequuntur, culpa perferendis libero aliquid iste vero corporis debitis veniam deleniti aspernatur natus aliquam nam eum porro quasi a asperiores neque, quaerat vel. Dolorum, tempora eligendi.
+        <div class="container-sm mt-3 bg-light p-3">
+
+            <div class="container-sm d-flex justify-content-between flex-nowrap">
+
+                <h4 class="font-weight-bold">
+                    Scoperta di una nuova specie di papera di gomma
+                </h4>
+                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color">
+
+                </i>
+               
+            </div>
+            <div class="container-sm d-flex flex-column">
+                <article>
+                    <div class="author">
+                        pubblicato da Dina Rossi
+                    </div>
+                    <div class="date">
+                        in data 15/01/2023
+                    </div>
+                </article>
+    
+                <!--end of top section-->
+    
+                <p>
+                    Un breve articolo sulla recente scoerta di una specie di papera di gomma mai vista prima.
+                </p>
+    
+                <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
+                <!--end of bottom section-->
+            </div>
+
+            
         </div>
         <!--end of 2nd post-->
 
-        <div class="container-md mt-3 bg-light">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo adipisci quod id inventore at laboriosam pariatur et non quidem quia nulla sunt doloribus aliquid ex qui officia repudiandae iusto ipsum, dignissimos porro quos facilis quam possimus minima? Ipsam, laudantium quaerat.
+        <div class="container-sm mt-3 bg-light p-3">
+
+            <div class="container-sm d-flex justify-content-between flex-nowrap">
+
+                <h4 class="font-weight-bold">
+                    Scoperta di una nuova specie di papera di gomma
+                </h4>
+                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color">
+
+                </i>
+               
+            </div>
+            <div class="container-sm d-flex flex-column">
+                <article>
+                    <div class="author">
+                        pubblicato da Dina Rossi
+                    </div>
+                    <div class="date">
+                        in data 15/01/2023
+                    </div>
+                </article>
+    
+                <!--end of top section-->
+    
+                <p>
+                    Un breve articolo sulla recente scoerta di una specie di papera di gomma mai vista prima.
+                </p>
+    
+                <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
+                <!--end of bottom section-->
+            </div>
+
+            
         </div>
         <!--end of 3rd post-->
 
-        <div class="container-md mt-3 bg-light">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat harum dolore dolorum maiores molestias quis amet. Est deleniti ea in soluta consequatur at omnis veniam, sit voluptatum ullam, suscipit eos dicta doloribus sapiente repellat cum excepturi possimus quaerat illum reprehenderit.
+        <div class="container-sm mt-3 bg-light p-3">
+
+            <div class="container-sm d-flex justify-content-between flex-nowrap">
+
+                <h4 class="font-weight-bold">
+                    Scoperta di una nuova specie di papera di gomma
+                </h4>
+                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color">
+
+                </i>
+               
+            </div>
+            <div class="container-sm d-flex flex-column">
+                <article>
+                    <div class="author">
+                        pubblicato da Dina Rossi
+                    </div>
+                    <div class="date">
+                        in data 15/01/2023
+                    </div>
+                </article>
+    
+                <!--end of top section-->
+    
+                <p>
+                    Un breve articolo sulla recente scoerta di una specie di papera di gomma mai vista prima.
+                </p>
+    
+                <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
+                <!--end of bottom section-->
+            </div>
+
+            
         </div>
         <!--end of 4th post-->
 
