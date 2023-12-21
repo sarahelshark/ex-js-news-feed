@@ -13,6 +13,8 @@
         :root{
             --primary-feed:#01293dff;
             --scrollbar-scroll:#2e5466ff;
+            --greener-green:#008000ff;
+            --blue-deep:#000080ff;
         }
     
      ::-webkit-scrollbar {
@@ -39,6 +41,13 @@
         .custom-bg-color {
             background-color: var(--primary-feed); 
             opacity: 95%;
+        }
+        
+        .custom-geo-badge{
+            background-color: var(--greener-green);
+        }
+        .custom-tech-badge{
+            background-color: var(--blue-deep);
         }
 
         @media (min-width: 576px){
@@ -114,10 +123,15 @@
     
                 <!--end of top section-->
                 <p>
-                    Un breve articolo sulla recente scoerta di una specie di papera di gomma mai vista prima.
+                    Un breve articolo sulla recente scoperta di una specie di papera di gomma mai vista prima.
                 </p>
                 
                 <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
+
+                <div class="badges">
+                    <span class="badge custom-geo-badge p-1 rounded-4 text-light font-weight-normal ">geo</span>
+                    <span class="badge custom-tech-badge p-1 rounded-4 text-light font-weight-normal">tech</span>
+                </div>
             
                 <!--end of bottom section-->
             </div>
