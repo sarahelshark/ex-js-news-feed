@@ -83,8 +83,7 @@
             font-weight: 500;
             line-height: 20px;
         }
-
-
+        
 
         @media (min-width: 576px){
             .container, .container-sm, .container-md, .container-lg, .container-xl {
@@ -107,20 +106,22 @@
         <div class="user-utilities p-3 bg-light">
             <div class="container-sm d-flex justify-content-between">
                 <div class="left-wrapper">
-                    <label for="iconTypeSelect" class="form-label">
+                    <label>
                         Filtra per tags
                     </label>
-                    <select id="iconTypeSelect" class="form-select">
+                    
+                    <select class="form-select" >
     
-                       <option value="all">Tutti i tags</option>
-                       <option value="animal">Politica</option>
-                       <option value="vegetable">Geo</option>
-                       <option value="user">Tech</option>
-                       <option value="user">Viaggi</option>
-                       <option value="user">Cucina</option>
-    
-                    </select>
+                        <option value="all">Tutti i tags</option>
+                        <option value="politics">Politica</option>
+                        <option value="geo"> Geo</option>
+                        <option value="tech">Tech</option>
+                        <option value="travel">Viaggi</option>
+                        <option value="cuisine">Cucina</option>
+     
+                     </select>
                </div>
+               
                <!--flex item 1 end-->
                <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -142,9 +143,9 @@
                 <h4 class="font-weight-bold">
                     Scoperta di una nuova specie di papera di gomma
                 </h4>
-                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color">
 
-                </i>
+                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none"> </i>
+                <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
                
             </div>
             <div class="container-sm d-flex flex-column justify-content-center">
@@ -187,8 +188,9 @@
                 <h4 class="font-weight-bold">
                     Viaggio culinario: alla ricerca dei sapori perduti
                 </h4>
-                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color">
+                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none">
                 </i>
+                <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
                
             </div>
             <div class="container-sm d-flex flex-column">
@@ -229,9 +231,9 @@
                 <h4 class="font-weight-bold">
                     Esplorano la profondit&agrave;
                 </h4>
-                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color ">
 
-                </i>
+                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color  d-none"></i>
+                <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
                
             </div>
             <div class="container-sm d-flex flex-column">
@@ -272,9 +274,8 @@
                 <h4 class="font-weight-bold">
                     Arte moderna: oltre i confini convezionali
                 </h4>
-                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color">
-
-                </i>
+                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none"></i>
+                <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
                
             </div>
             <div class="container-sm d-flex flex-column">
