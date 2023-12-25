@@ -15,6 +15,9 @@
             --scrollbar-scroll:#2e5466ff;
             --greener-green:#008000ff;
             --blue-deep:#000080ff;
+            --purple-custom:#800080ff;
+            --orange-custom:#f2a261ff;
+            --yellow-custom:#ffd500ff;
         }
     
      ::-webkit-scrollbar {
@@ -30,13 +33,16 @@
         }
         
         /*end of custom scrollbar*/
+        h1{
+            line-height: 5rem;
+        }
         img{
             width: 100%;
             object-fit: cover;
             
         }
         .custom-txt-color{
-            color: #01293dff;
+            color: var(--primary-feed);
         }
         .custom-bg-color {
             background-color: var(--primary-feed); 
@@ -48,6 +54,15 @@
         }
         .custom-tech-badge{
             background-color: var(--blue-deep);
+        }
+        .custom-art-badge{
+            background-color: var(--yellow-custom);
+        }
+        .custom-cooking-badge{
+            background-color: var(--purple-custom);
+        }
+        .custom-travel-badge{
+            background-color: var(--orange-custom);
         }
 
         @media (min-width: 576px){
@@ -61,7 +76,7 @@
 </head>
 <body class="custom-bg-color">
 
-    <div class="container-sm  mx-auto flex-column  d-flex  justify-content-between">
+    <div class="container-sm  mb-3 flex-column  d-flex  justify-content-between">
 
         <!--site intro-->
         <h1 class="text-white d-flex justify-content-center ">
@@ -129,8 +144,12 @@
                 <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
 
                 <div class="badges">
-                    <span class="badge custom-geo-badge p-1 rounded-4 text-light font-weight-normal ">geo</span>
-                    <span class="badge custom-tech-badge p-1 rounded-4 text-light font-weight-normal">tech</span>
+                    <span class="badge custom-geo-badge p-1 rounded-4 text-light font-weight-normal ">
+                        geo
+                    </span>
+                    <span class="badge custom-tech-badge p-1 rounded-4 text-light font-weight-normal">
+                        tech
+                    </span>
                 </div>
             
                 <!--end of bottom section-->
@@ -169,6 +188,13 @@
                 </p>
     
                 <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
+
+                <div class="badges">
+                    <span class="badge custom-cooking-badge p-1 rounded-4 text-light font-weight-normal ">
+                        cucina
+                    </span>
+                    
+                </div>
                 <!--end of bottom section-->
             </div>
 
@@ -205,6 +231,13 @@
                 </p>
     
                 <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
+
+                <div class="badges">
+                    <span class="badge custom-travel-badge p-1 rounded-4 text-light font-weight-normal ">
+                        viaggi
+                    </span>
+                    
+                </div>
                 <!--end of bottom section-->
             </div>
 
@@ -241,6 +274,16 @@
                 </p>
     
                 <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
+                <div class="badges">
+                    <span class="badge custom-art-badge p-1 rounded-4 text-light font-weight-normal ">
+                        arte
+                    </span>
+                    <span class="badge custom-tech-badge p-1 rounded-4 text-light font-weight-normal">
+                        tech
+                    </span>
+                    
+                    
+                </div>
                 <!--end of bottom section-->
             </div>
 
