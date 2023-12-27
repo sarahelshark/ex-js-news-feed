@@ -186,6 +186,7 @@ console.log(test)
 
 
 test.addEventListener("change", function() {
-  console.log('it worked')
+  console.log(test.value);
+  //if text === politica{}
 });
 
