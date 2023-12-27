@@ -89,7 +89,12 @@ const allArticles = [
 const articleWrapperEL=  document.getElementById('articlesWrapper');
 //console.log(mainWrapperEL);
 
+
 //creo funzione che sarà richiamata al caricamento della pagina per stampare tutti gli articoli in pagina
+/**
+ * ## Stampa i miei oggetti sul DOM
+ * @param {Array} articles array di oggetti da stampare sul DOM con template literal
+ */
 function stampaArticoli() {
 
   allArticles.forEach(article => {
