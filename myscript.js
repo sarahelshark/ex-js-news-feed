@@ -180,3 +180,12 @@ function stampaOpzioniSelect() {
 document.addEventListener('DOMContentLoaded', stampaOpzioniSelect);
 
 
+// step 3, gestire  il cambio della selezione nel filtro
+const test = document.getElementById("selectEl");
+console.log(test)
+
+
+test.addEventListener("change", function() {
+  console.log('it worked')
+});
+
