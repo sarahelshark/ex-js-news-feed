@@ -81,7 +81,62 @@ const allArticles = [
       image: 'modern-art.jpg',
       alt: 'wall full of graffiti, street art',
       id: '4'
-  },
+  }
 ]
-
 //console.log(allArticles);
+
+//creo il luogo in cui andrò a stampare successivamente i miei articoli e filtri
+const articleWrapperEL=  document.getElementById('articlesWrapper');
+//console.log(mainWrapperEL);
+
+//creo funzione che sarà richiamata al caricamento della pagina per stampare tutti gli articoli in pagina
+function stampaArticoli() {
+
+  allArticles.forEach(article => {
+
+    //creo un contenitore del mio template literal
+    const articleContainer = document.createElement('div');
+    //...le sue classi
+    articleContainer.className = 'container-sm mt-3 bg-light p-2';
+    //...il suo id
+    articleContainer.id = `articleContainer_${article.id}`; 
+    //...il suo html con template literal
+    articleContainer.innerHTML = `
+      <div class="container-sm d-flex justify-content-between flex-nowrap">
+        <h4 class="font-weight-bold">
+          ${article.title}
+        </h4>
+        <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none"> </i>
+        <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
+      </div>
+      <div class="container-sm d-flex flex-column justify-content-center">
+        <article>
+          <div class="author font-weight-bold">
+            Pubblicato da ${article.author}
+          </div>
+          <div class="date">
+            in data ${article.published.toLocaleDateString('it-IT')}
+          </div>
+        </article>
+        <p>
+          ${article.content}
+        </p>
+        <img src="./images/${article.image}" alt="${article.alt}">
+        <div class="badges mt-1">
+          ${article.tags.map(tag => `
+            <span class="badge custom-${tag}-badge p-1 rounded-4 text-light font-weight-normal shadow">
+              ${tag}
+            </span>`).join('')}
+        </div>
+      </div>
+    `; 
+    //..unisco il mio template literal al div che ho creato precedentemente
+    articleWrapperEL.appendChild(articleContainer);
+  });
+
+}
+// Chiamare la funzione per stampare gli articoli quando la pagina è pronta
+document.addEventListener('DOMContentLoaded', stampaArticoli);
+
+
+//faccio la stess cosa per i filtri dopo const filterWrapperEL=document.getElementById('filterWrapper');

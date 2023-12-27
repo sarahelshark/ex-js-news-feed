@@ -55,13 +55,13 @@
         .custom-tech-badge{
             background-color: var(--blue-deep);
         }
-        .custom-art-badge{
+        .custom-arte-badge{
             background-color: var(--yellow-custom);
         }
-        .custom-cooking-badge{
+        .custom-cucina-badge{
             background-color: var(--purple-custom);
         }
-        .custom-travel-badge{
+        .custom-viaggi-badge{
             background-color: var(--orange-custom);
         }
         ::before{
@@ -95,15 +95,15 @@
     </style>
 </head>
 <body class="custom-bg-color">
-
-    <div class="container-sm  mb-3 flex-column  d-flex  justify-content-between">
-
-        <!--site intro-->
+<!--site intro-->
         <h1 class="text-white d-flex justify-content-center ">
             News Feed
         </h1>
 
-        <div class="user-utilities p-3 bg-light">
+    <div class="container-sm mb-3 flex-column  d-flex  justify-content-between " id="mainWrapper">
+        
+        <div class="container-sm" id="filterWrapper">
+          <div class="user-utilities p-3 bg-light">
             <div class="container-sm d-flex justify-content-between">
                 <div class="left-wrapper">
                     <label>
@@ -134,185 +134,12 @@
             </div>
             
         </div>
-
-        <!--main section of site-->
-        <div class="container-sm mt-3 bg-light p-2">
-
-            <div class="container-sm d-flex justify-content-between flex-nowrap">
-
-                <h4 class="font-weight-bold">
-                    Scoperta di una nuova specie di papera di gomma
-                </h4>
-
-                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none"> </i>
-                <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
-               
-            </div>
-            <div class="container-sm d-flex flex-column justify-content-center">
-                <article>
-                    <div class="author font-weight-bold">
-                        pubblicato da Dina Rossi
-                    </div>
-                    <div class="date">
-                        in data 15/01/2023
-                    </div>
-                </article>
-    
-                <!--end of top section-->
-                <p>
-                    Un breve articolo sulla recente scoperta di una specie di papera di gomma mai vista prima.
-                </p>
-                
-                <img src="./images/rubber-duck.jpg"  alt="rubber duck in a river">
-
-                <div class="badges mt-1">
-                    <span class="badge custom-geo-badge p-1 rounded-4 text-light font-weight-normal shadow">
-                        geo
-                    </span>
-                    <span class="badge custom-tech-badge p-1 rounded-4 text-light font-weight-normal shadow">
-                        tech
-                    </span>
-                </div>
-            
-                <!--end of bottom section-->
-            </div>
-
-            
         </div>
-        <!--end of 1st post-->
+        <!--end of filter section of site-->
+        <div class="container-sm" id="articlesWrapper">
 
-        <div class="container-sm mt-3 bg-light p-2">
-
-            <div class="container-sm d-flex justify-content-between flex-nowrap">
-
-                <h4 class="font-weight-bold">
-                    Viaggio culinario: alla ricerca dei sapori perduti
-                </h4>
-                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none">
-                </i>
-                <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
-               
-            </div>
-            <div class="container-sm d-flex flex-column">
-                <article>
-                    <div class="author font-weight-bold">
-                        pubblicato da Marco Bianchi
-                    </div>
-                    <div class="date">
-                        in data 20/02/2023
-                    </div>
-                </article>
-    
-                <!--end of top section-->
-    
-                <p>
-                    Esplorazione di tradizioni culinarie dimenticate e la ricerca di sapori autentici.
-                </p>
-    
-                <img src="./images/kitchen-food.jpg"  alt="a table with tomatoes, a knife in the middle and some pot herbs">
-
-                <div class="badges mt-1">
-                    <span class="badge custom-cooking-badge p-1 rounded-4 text-light font-weight-normal shadow">
-                        cucina
-                    </span>
-                    
-                </div>
-                <!--end of bottom section-->
-            </div>
-
-            
         </div>
-        <!--end of 2nd post-->
-
-        <div class="container-sm mt-3 bg-light p-2">
-
-            <div class="container-sm d-flex justify-content-between flex-nowrap">
-
-                <h4 class="font-weight-bold">
-                    Esplorano la profondit&agrave;
-                </h4>
-
-                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none"></i>
-                <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
-               
-            </div>
-            <div class="container-sm d-flex flex-column">
-                <article>
-                    <div class="author font-weight-bold">
-                        pubblicato da Fabio Mari
-                    </div>
-                    <div class="date">
-                        in data 15/01/2023
-                    </div>
-                </article>
-    
-                <!--end of top section-->
-    
-                <p>
-                    Un viaggio nelle profondit&agrave; dell'oceano alla scoperta di creature misteriose e inesplorate. 
-                </p>
-    
-                <img src="./images/deep-sea.jpg"  alt="deep sea">
-
-                <div class="badges mt-1">
-                    <span class="badge custom-travel-badge p-1 rounded-4 text-light font-weight-normal shadow">
-                        viaggi
-                    </span>
-                    
-                </div>
-                <!--end of bottom section-->
-            </div>
-
-            
-        </div>
-        <!--end of 3rd post-->
-
-        <div class="container-sm mt-3 bg-light p-2">
-
-            <div class="container-sm d-flex justify-content-between flex-nowrap">
-
-                <h4 class="font-weight-bold">
-                    Arte moderna: oltre i confini convezionali
-                </h4>
-                <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none"></i>
-                <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
-               
-            </div>
-            <div class="container-sm d-flex flex-column">
-                <article>
-                    <div class="author font-weight-bold">
-                        pubblicato da Gabriele Neri
-                    </div>
-                    <div class="date">
-                        in data 05/04/2023
-                    </div>
-                </article>
-    
-                <!--end of top section-->
-    
-                <p>
-                    Un'analisi delle tendenze e delle sfide nell'arte contemporanea, con interviste e artisti emergenti.
-                </p>
-    
-                <img src="./images/modern-art.jpg" alt="wall full of graffiti, street art">
-
-                <div class="badges mt-1">
-                    <span class="badge custom-art-badge p-1 rounded-4 text-light font-weight-normal shadow">
-                        arte
-                    </span>
-                    <span class="badge custom-tech-badge p-1 rounded-4 text-light font-weight-normal shadow">
-                        tech
-                    </span>
-                    
-                    
-                </div>
-                <!--end of bottom section-->
-            </div>
-
-            
-        </div>
-        <!--end of 4th post-->
-
+        <!--end of articles section of site-->
 
     </div>
     
