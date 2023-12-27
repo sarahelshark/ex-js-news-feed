@@ -105,6 +105,12 @@ function stampaArticoli() {
     articleContainer.className = 'container-sm mt-3 bg-light p-2';
     //...il suo id
     articleContainer.id = `articleContainer_${article.id}`; 
+    //modifico il formato delle date
+    const formattedDate = article.published.toLocaleDateString('it-IT', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
     //...il suo html con template literal
     articleContainer.innerHTML = `
       <div class="container-sm d-flex justify-content-between flex-nowrap">
@@ -120,7 +126,7 @@ function stampaArticoli() {
             Pubblicato da ${article.author}
           </div>
           <div class="date">
-            in data ${article.published.toLocaleDateString('it-IT')}
+            in data ${formattedDate};
           </div>
         </article>
         <p>
