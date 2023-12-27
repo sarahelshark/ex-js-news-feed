@@ -83,11 +83,10 @@ const allArticles = [
       id: '4'
   }
 ]
-//console.log(allArticles);
 
 //creo il luogo in cui andrò a stampare successivamente i miei articoli e filtri
 const articleWrapperEL =  document.getElementById('articlesWrapper');
-//console.log(mainWrapperEL);
+
 
 //creo funzione che sarà richiamata al caricamento della pagina per stampare tutti gli articoli in pagina
 /**
@@ -177,6 +176,7 @@ function stampaOpzioniSelect() {
     selectElement.appendChild(option);
   });
 }
-
 // Chiamare la funzione quando la pagina è caricata, come ho fatto con gli articoli
 document.addEventListener('DOMContentLoaded', stampaOpzioniSelect);
+
+
