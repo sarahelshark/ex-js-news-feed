@@ -86,9 +86,8 @@ const allArticles = [
 //console.log(allArticles);
 
 //creo il luogo in cui andrò a stampare successivamente i miei articoli e filtri
-const articleWrapperEL=  document.getElementById('articlesWrapper');
+const articleWrapperEL =  document.getElementById('articlesWrapper');
 //console.log(mainWrapperEL);
-
 
 //creo funzione che sarà richiamata al caricamento della pagina per stampare tutti gli articoli in pagina
 /**
@@ -150,4 +149,34 @@ function stampaArticoli() {
 document.addEventListener('DOMContentLoaded', stampaArticoli);
 
 
-//faccio la stess cosa per i filtri dopo const filterWrapperEL=document.getElementById('filterWrapper');
+/**
+ * Aggiunge dinamicamente le opzioni alla select.
+ *
+ * @function
+ */
+function stampaOpzioniSelect() {
+  // luogo che voglio popolare
+  const selectElement = document.querySelector('.form-select');
+
+  // Array di opzioni che ciclero con forEach
+  const tagsOptions = [
+    'Tutti i tags',
+    'Politica',
+    'Geo',
+    'Tech',
+    'Viaggi',
+    'Cucina'
+  ];
+
+  tagsOptions.forEach(tag => {
+    //creo il mio div delle options
+    const option = document.createElement('option');
+    //...lo riempio col contenuto
+    option.textContent = tag;
+    //lo appendo al luogo dove devo popolare
+    selectElement.appendChild(option);
+  });
+}
+
+// Chiamare la funzione quando la pagina è caricata, come ho fatto con gli articoli
+document.addEventListener('DOMContentLoaded', stampaOpzioniSelect);
