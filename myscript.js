@@ -88,6 +88,7 @@ const allArticles = [
 const articleWrapperEL =  document.getElementById('articlesWrapper');
 
 
+
 //creo funzione che sarà richiamata al caricamento della pagina per stampare tutti gli articoli in pagina
 /**
  * ## Stampa i miei oggetti sul DOM
@@ -185,8 +186,38 @@ const test = document.getElementById("selectEl");
 console.log(test)
 
 
-test.addEventListener("change", function() {
-  console.log(test.value);
-  //if text === politica{}
+let articlesAvailable = true
+let i = 0;
+
+while (articlesAvailable ) {
+
+  test.addEventListener("change", function() {
+  //console.log(test.value);
+
+  if (test.value === "Tutti i tags"){
+    stampaArticoli();
+  }else if(test.value === "Tech"){
+   console.log('ok');
+  } else  if(test.value === "Viaggi"){
+  console.log ('ok');
+ }else if (test.value === "Cucina"){
+  console.log ('ok');
+ } else if(test.value === "Politica") {
+    //svuoto la pagina
+    document.getElementById('articlesWrapper').innerHTML=" ";
+    //inserisco un messaggio che avverte l'utente dell'assenza di posts in merito al filtro scelto    
+    //scelgo il luogo dove posizionare il mio nuovo messaggio e creo l'elemento in pagina
+    const wrapperEl = document.getElementById('mainWrapper');
+    const articleNotAvailable = document.createElement('h3');
+    //...le sue classi
+    articleNotAvailable.className = 'container-sm mt-3 text-light';
+    //...il suo html con template literal
+    articleNotAvailable.innerHTML = `No news available.  `; 
+    //..unisco il mio template literal al div che ho creato precedentemente
+    wrapperEl.appendChild(articleNotAvailable);
+
+  }
 });
 
+  break
+}
