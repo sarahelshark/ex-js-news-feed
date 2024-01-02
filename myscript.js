@@ -1,4 +1,6 @@
-
+window.addEventListener('scroll', () => {
+  console.log("scrolled");
+});
 //alla fine //scrollbar che si vede solo allo scroll
 
 //inserire dinamicamente in pagina i post
