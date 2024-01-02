@@ -1,0 +1,84 @@
+
+:root{
+    --primary-feed:#01293dff;
+    --scrollbar-scroll:#2e5466ff;
+    --greener-green:#008000ff;
+    --blue-deep:#000080ff;
+    --purple-custom:#800080ff;
+    --orange-custom:#f2a261ff;
+    --yellow-custom:#ffd500ff;
+}
+
+::-webkit-scrollbar {
+width: 3px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+background: none; 
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: var(--scrollbar-scroll); 
+}
+
+/*end of custom scrollbar*/
+
+
+h1{
+    line-height: 5rem;
+}
+img{
+    width: 100%;
+    object-fit: cover;
+    
+}
+.custom-txt-color{
+    color: var(--primary-feed);
+}
+.custom-bg-color {
+    background-color: var(--primary-feed); 
+    opacity: 95%;
+}
+
+.custom-geo-badge{
+    background-color: var(--greener-green);
+}
+.custom-tech-badge{
+    background-color: var(--blue-deep);
+}
+.custom-arte-badge{
+    background-color: var(--yellow-custom);
+}
+.custom-cucina-badge{
+    background-color: var(--purple-custom);
+}
+.custom-viaggi-badge{
+    background-color: var(--orange-custom);
+}
+::before{
+    padding-left: .2rem;
+}
+h4{
+    font-size: 1.2rem;
+    margin-bottom: 0rem;
+    font-weight: 500;
+}
+article{
+    line-height: 1rem;
+}
+.date{
+    font-size: 13px;font-weight: 500;
+}
+p{
+    padding-top:.75rem;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+
+@media (min-width: 576px){
+    .container, .container-sm, .container-md, .container-lg, .container-xl {
+      max-width: 540px;
+    }
+}
+
