@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', stampaArticoli);
 
 
 /**
- * Aggiunge dinamicamente le opzioni alla select.
+ * ## Aggiunge dinamicamente le opzioni alla select.
  *
  * @function
  */
@@ -224,10 +224,11 @@ while (articlesAvailable ) {
   break
 }
 
-
-
-
-   function stampaVuoto() {
+/**
+ * ## Stampa il mio messaggio di vuoto nel DOM
+ *
+ */
+function stampaVuoto() {
     
     
     for (let i = 0; i < 1; i++){
