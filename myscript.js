@@ -187,7 +187,8 @@ document.addEventListener('DOMContentLoaded', stampaOpzioniSelect);
 const test = document.getElementById("selectEl");
 console.log(test)
 
-
+// Dichiarare una variabile globale per tenere traccia della chiamata della funzione
+let isVuotoStampato = false;
 let articlesAvailable = true
 let i = 0;
 
@@ -207,10 +208,17 @@ while (articlesAvailable ) {
  }else if (test.value === "Cucina"){
   console.log ('ok');
  } else if(test.value === "Politica") {
-   //svuoto la pagina
-    document.getElementById('articlesWrapper').innerHTML=" ";
+  if (!isVuotoStampato) {
+    document.getElementById('articlesWrapper').innerHTML = " ";
     stampaVuoto();
+    // Impostare la variabile su true dopo la prima chiamata
+    isVuotoStampato = true;
+  } else {
+    //cosi lo ripeto una volta sola, oni volta che clicco sulla categoria
+    document.getElementById('articlesWrapper').innerHTML = " ";
   }
+  
+}
 });
 
   break
@@ -220,6 +228,8 @@ while (articlesAvailable ) {
 
 
    function stampaVuoto() {
+    
+    
     for (let i = 0; i < 1; i++){
      
       //inserisco un messaggio che avverte l'utente dell'assenza di posts in merito al filtro scelto    
@@ -235,18 +245,4 @@ while (articlesAvailable ) {
        }
    }
 
-   function stampaPlaceholder() {
-    
-     
-      //inserisco un messaggio che avverte l'utente dell'assenza di posts in merito al filtro scelto    
-      //scelgo il luogo dove posizionare il mio nuovo messaggio e creo l'elemento in pagina
-      const wrapperEl = document.getElementById('mainWrapper');
-      const articleNotAvailable = document.createElement('h3');
-      //...le sue classi
-      articleNotAvailable.className = 'container-sm mt-3 text-light';
-      //...il suo html con template literal
-      articleNotAvailable.innerHTML = `No news available.  `; 
-      //..unisco il mio template literal al div che ho creato precedentemente
-      wrapperEl.appendChild(articleNotAvailable);
-       
-   }
+  
