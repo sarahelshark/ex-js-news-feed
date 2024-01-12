@@ -86,20 +86,34 @@ const allArticles = [
   }
 ]
 
+/***********************************************ARRAY DEI TAGS DEL MIO ARRAY OBJECT*/
+const tagsSet = new Set();  //approccio per evitare doppioni di tags 
+
+allArticles.forEach(article => {
+  article.tags.forEach(tag => tagsSet.add(tag));
+});
+
+const tagsArray = Array.from(tagsSet);
+
+console.log(tagsArray);
+/*************************************************************************** */
+
+
+
 //creo il luogo in cui andrò a stampare successivamente i miei articoli e filtri
 const articleWrapperEL =  document.getElementById('articlesWrapper');
 
-
-
 //creo funzione che sarà richiamata al caricamento della pagina per stampare tutti gli articoli in pagina
 /**
- * ## Stampa i miei oggetti sul DOM
+ * ## Stampa i miei oggetti sul DOM, TUTTI 
  * @param {Array} articles array di oggetti da stampare sul DOM con template literal
  */
 function stampaArticoli() {
-
+  // Pulisci il contenuto attuale
+  articleWrapperEL.innerHTML = "";
+  
+  //stampa articoli
   allArticles.forEach(article => {
-
     //creo un contenitore del mio template literal
     const articleContainer = document.createElement('div');
     //...le sue classi
@@ -182,31 +196,89 @@ function stampaOpzioniSelect() {
 // Chiamare la funzione quando la pagina è caricata, come ho fatto con gli articoli
 document.addEventListener('DOMContentLoaded', stampaOpzioniSelect);
 
+/**
+ * ## Stampa il mio messaggio di vuoto nel DOM
+ *
+ */
+function stampaVuoto() {
+    
+  //inserisco un messaggio che avverte l'utente dell'assenza di posts in merito al filtro scelto    
+  //scelgo il luogo dove posizionare il mio nuovo messaggio e creo l'elemento in pagina
+  const wrapperEl = document.getElementById('mainWrapper');
+  const articleNotAvailable = document.createElement('h3');
+  //...le sue classi
+  articleNotAvailable.className = 'container-sm mt-3 text-light';
+  //...il suo html con template literal
+  articleNotAvailable.innerHTML = `No news available.  `; 
+  //..unisco il mio template literal al div che ho creato precedentemente
+  wrapperEl.appendChild(articleNotAvailable)
+}
+
 
 // step 3, gestire  il cambio della selezione nel filtro
 const test = document.getElementById("selectEl");
 console.log(test)
 
-// Dichiarare una variabile globale per tenere traccia della chiamata della funzione
+test.addEventListener("change", function() {
+
+  if (test.value === "Tutti i tags"){
+
+    document.getElementById('articlesWrapper').innerHTML = " ";
+    stampaArticoli();
+
+  }else if(test.value === "Geo"){
+
+    document.getElementById('articlesWrapper').innerHTML = " ";
+    console.log(test.value,);
+
+  }else if(test.value === "Tech"){
+
+    document.getElementById('articlesWrapper').innerHTML = " ";
+    console.log(test.value);
+    
+  } else  if(test.value === "Viaggi"){
+
+    document.getElementById('articlesWrapper').innerHTML = " ";
+    console.log(test.value);
+    
+ }else if (test.value === "Cucina"){
+
+    document.getElementById('articlesWrapper').innerHTML = " ";
+    console.log(test.value);
+    
+ } else if(test.value === "Politica") {
+
+    document.getElementById('articlesWrapper').innerHTML = " ";
+    console.log(test.value);
+    
+  }
+});
+
+
+
+
+/**
+ * // Dichiarare una variabile globale per tenere traccia della chiamata della funzione
 let isVuotoStampato = false;
 let articlesAvailable = true
 let i = 0;
 
 while (articlesAvailable ) {
 
-  test.addEventListener("change", function(articlesAvailable) {
+  test.addEventListener("change", function() {
   //console.log(test.value);
 
   if (test.value === "Tutti i tags"){
+    document.getElementById('articlesWrapper').innerHTML = " ";
     stampaArticoli();
   }else if(test.value === "Geo"){
-    console.log('ok');
+    document.getElementById('articlesWrapper').innerHTML = " ";
   }else if(test.value === "Tech"){
-   console.log('ok');
+    document.getElementById('articlesWrapper').innerHTML = " ";
   } else  if(test.value === "Viaggi"){
   console.log ('ok');
  }else if (test.value === "Cucina"){
-  console.log ('ok');
+  document.getElementById('articlesWrapper').innerHTML = " ";
  } else if(test.value === "Politica") {
   if (!isVuotoStampato) {
     document.getElementById('articlesWrapper').innerHTML = " ";
@@ -217,33 +289,11 @@ while (articlesAvailable ) {
     //cosi lo ripeto una volta sola, oni volta che clicco sulla categoria
     document.getElementById('articlesWrapper').innerHTML = " ";
   }
-  
 }
 });
 
   break
 }
 
-/**
- * ## Stampa il mio messaggio di vuoto nel DOM
- *
- */
-function stampaVuoto() {
-    
-    
-    for (let i = 0; i < 1; i++){
-     
-      //inserisco un messaggio che avverte l'utente dell'assenza di posts in merito al filtro scelto    
-      //scelgo il luogo dove posizionare il mio nuovo messaggio e creo l'elemento in pagina
-      const wrapperEl = document.getElementById('mainWrapper');
-      const articleNotAvailable = document.createElement('h3');
-      //...le sue classi
-      articleNotAvailable.className = 'container-sm mt-3 text-light';
-      //...il suo html con template literal
-      articleNotAvailable.innerHTML = `No news available.  `; 
-      //..unisco il mio template literal al div che ho creato precedentemente
-      wrapperEl.appendChild(articleNotAvailable);
-       }
-   }
 
-  
+ */
