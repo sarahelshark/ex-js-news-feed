@@ -40,7 +40,7 @@ allBookmarks.forEach(bookmark => {
 
 
 */
-
+/*********************************STRUTTURE DATI************************************************/
 //STEP1- stampo tutti gli articoli in pagina
 //creo una lista di oggetti
 const allArticles = [
@@ -96,75 +96,7 @@ allArticles.forEach(article => {
 const tagsArray = Array.from(tagsSet);
 
 console.log(tagsArray);
-/*************************************************************************** */
-
-
-
-//creo il luogo in cui andrò a stampare successivamente i miei articoli e filtri
-const articleWrapperEL =  document.getElementById('articlesWrapper');
-
-//creo funzione che sarà richiamata al caricamento della pagina per stampare tutti gli articoli in pagina
-/**
- * ## Stampa i miei oggetti sul DOM, TUTTI 
- * @param {Array} articles array di oggetti da stampare sul DOM con template literal
- */
-function stampaArticoli() {
-  // Pulisci il contenuto attuale
-  articleWrapperEL.innerHTML = "";
-  
-  //stampa articoli
-  allArticles.forEach(article => {
-    //creo un contenitore del mio template literal
-    const articleContainer = document.createElement('div');
-    //...le sue classi
-    articleContainer.className = 'container-sm mt-3 bg-light p-2';
-    //...il suo id
-    articleContainer.id = `articleContainer_${article.id}`; 
-    //modifico il formato delle date
-    const formattedDate = article.published.toLocaleDateString('it-IT', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    });
-    //...il suo html con template literal
-    articleContainer.innerHTML = `
-      <div class="container-sm d-flex justify-content-between flex-nowrap">
-        <h4 class="font-weight-bold">
-          ${article.title}
-        </h4>
-        <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none"> </i>
-        <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
-      </div>
-      <div class="container-sm d-flex flex-column justify-content-center">
-        <article>
-          <div class="author font-weight-bold">
-            Pubblicato da ${article.author}
-          </div>
-          <div class="date">
-            in data ${formattedDate};
-          </div>
-        </article>
-        <p>
-          ${article.content}
-        </p>
-        <img src="./images/${article.image}" alt="${article.alt}">
-        <div class="badges mt-1">
-          ${article.tags.map(tag => `
-            <span class="badge custom-${tag}-badge p-1 rounded-4 text-light font-weight-normal shadow">
-              ${tag}
-            </span>`).join('')}
-        </div>
-      </div>
-    `; 
-    //..unisco il mio template literal al div che ho creato precedentemente
-    articleWrapperEL.appendChild(articleContainer);
-  });
-
-}
-// Chiamare la funzione per stampare gli articoli quando la pagina è pronta
-document.addEventListener('DOMContentLoaded', stampaArticoli);
-
-
+/************ ******************DYNAMIC SELECT *****************************************/
 /**
  * ## Aggiunge dinamicamente le opzioni alla select.
  *
@@ -196,6 +128,112 @@ function stampaOpzioniSelect() {
 // Chiamare la funzione quando la pagina è caricata, come ho fatto con gli articoli
 document.addEventListener('DOMContentLoaded', stampaOpzioniSelect);
 
+/*****************************GENERARE LE news vecchio metodo*******************/
+//creo il luogo in cui andrò a stampare successivamente i miei articoli e filtri
+const articleWrapperEL =  document.getElementById('articlesWrapper');
+//creo funzione che sarà richiamata al caricamento della pagina per stampare tutti gli articoli in pagina
+/**
+ * ## Stampa i miei oggetti sul DOM, TUTTI 
+ *@param {Array} articles array di oggetti da stampare sul DOM con template literal
+ * @function   stampa articoli
+ */
+function stampaArticoli() {
+//Pulisci il contenuto attuale
+  articleWrapperEL.innerHTML = "";
+//
+  allArticles.forEach(article => {
+    //creo un contenitore del mio template literal
+    const articleContainer = document.createElement('div');
+    //...le sue classi
+    articleContainer.className = 'container-sm mt-3 bg-light p-2';
+    //il suo id, che poi uso per nascondere le news
+    articleContainer.id = `articleContainer_${article.id}`; 
+    //modifico il formato delle date
+    const formattedDate = article.published.toLocaleDateString('it-IT', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  // il suo html con template literal
+    articleContainer.innerHTML = `
+      <div class="container-sm d-flex justify-content-between flex-nowrap">
+        <h4 class="font-weight-bold">
+          ${article.title}
+        </h4>
+        <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none"> </i>
+        <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
+      </div>
+      <div class="container-sm d-flex flex-column justify-content-center">
+        <article>
+          <div class="author font-weight-bold">
+            Pubblicato da ${article.author}
+          </div>
+          <div class="date">
+            in data ${formattedDate};
+          </div>
+        </article>
+        <p>
+          ${article.content}
+        </p>
+        <img src="./images/${article.image}" alt="${article.alt}">
+        <div class="badges mt-1">
+          ${article.tags.map(tag => `
+            <span class="badge custom-${tag}-badge p-1 rounded-4 text-light font-weight-normal shadow">
+              ${tag}
+            </span>`).join('')}
+        </div>
+      </div>
+    `; 
+    //unisco il mio template literal al div che ho creato precedentemente
+    articleWrapperEL.appendChild(articleContainer);
+  });
+
+}
+//Chiamare la funzione per stampare gli articoli quando la pagina è pronta
+document.addEventListener('DOMContentLoaded', stampaArticoli);
+
+/************************FUNZIONE FILTRO ARTICOLI****************************************/
+function filterArticles() {
+	
+  //creo costante per estrapolare value che utilizzero in filter() (voglio filtrare il mio array di oggetti)
+  const selectedType = test.value;
+
+  //Soluzione più semplice
+  // Ciclo attraverso tutti post e nascondo quelli che non corrispondono al tipo selezionato
+  for (let i = 0; i < allArticles.length; i++) {
+  
+    const cardId = `articleContainer_${allArticles.id}`;
+    const card = document.getElementById(cardId);
+
+    if (selectedType === 'Tutti i tags' || allArticles[i].tags === selectedType) {
+      stampaArticoli()
+    // mostra la card se la situazione è quella di default con tutte le carte e/o se le icone sono del tipo selezionato
+    } else {
+      console.log('prova') // nascondi la card se la situazione è contraria alla situazione descritta sopra
+    }   
+
+   }
+
+
+}
+
+/********************TRIGGERO CAMBIAMENTO****************************************/
+
+//variabile + event listener al 'change'
+const test = document.getElementById("selectEl");
+//gestire il cambiamento della select direttamente con la mia funzione 
+test.addEventListener('change', filterArticles);
+
+
+
+
+
+
+
+
+
+/***************************GENERARE MESSAGGIO VUOTO*************************************/
+
 /**
  * ## Stampa il mio messaggio di vuoto nel DOM
  *
@@ -211,89 +249,56 @@ function stampaVuoto() {
   //...il suo html con template literal
   articleNotAvailable.innerHTML = `No news available.  `; 
   //..unisco il mio template literal al div che ho creato precedentemente
-  wrapperEl.appendChild(articleNotAvailable)
+  wrapperEl.appendChild(articleNotAvailable);
 }
 
 
-// step 3, gestire  il cambio della selezione nel filtro
+
+
+
+
+
+
+
+
+
+
+
+/**old
+ * // step 3,gestire  il cambio della selezione nel filtro
 const test = document.getElementById("selectEl");
 console.log(test)
 
 test.addEventListener("change", function() {
 
-  if (test.value === "Tutti i tags"){
-
-    document.getElementById('articlesWrapper').innerHTML = " ";
-    stampaArticoli();
-
-  }else if(test.value === "Geo"){
-
-    document.getElementById('articlesWrapper').innerHTML = " ";
-    console.log(test.value,);
-
-  }else if(test.value === "Tech"){
-
-    document.getElementById('articlesWrapper').innerHTML = " ";
-    console.log(test.value);
-    
-  } else  if(test.value === "Viaggi"){
-
-    document.getElementById('articlesWrapper').innerHTML = " ";
-    console.log(test.value);
-    
- }else if (test.value === "Cucina"){
-
-    document.getElementById('articlesWrapper').innerHTML = " ";
-    console.log(test.value);
-    
- } else if(test.value === "Politica") {
-
-    document.getElementById('articlesWrapper').innerHTML = " ";
-    console.log(test.value);
-    
-  }
-});
-
-
-
-
-/**
- * // Dichiarare una variabile globale per tenere traccia della chiamata della funzione
-let isVuotoStampato = false;
-let articlesAvailable = true
-let i = 0;
-
-while (articlesAvailable ) {
-
-  test.addEventListener("change", function() {
-  //console.log(test.value);
-
-  if (test.value === "Tutti i tags"){
-    document.getElementById('articlesWrapper').innerHTML = " ";
-    stampaArticoli();
-  }else if(test.value === "Geo"){
-    document.getElementById('articlesWrapper').innerHTML = " ";
-  }else if(test.value === "Tech"){
-    document.getElementById('articlesWrapper').innerHTML = " ";
-  } else  if(test.value === "Viaggi"){
-  console.log ('ok');
- }else if (test.value === "Cucina"){
+ // Reimposto la variabile quando la selezione cambia
+ if (test.value !== "Politica") {
   document.getElementById('articlesWrapper').innerHTML = " ";
- } else if(test.value === "Politica") {
-  if (!isVuotoStampato) {
+  stampaArticoli();
+}else if (test.value === "Politica") {
     document.getElementById('articlesWrapper').innerHTML = " ";
-    stampaVuoto();
-    // Impostare la variabile su true dopo la prima chiamata
-    isVuotoStampato = true;
-  } else {
-    //cosi lo ripeto una volta sola, oni volta che clicco sulla categoria
-    document.getElementById('articlesWrapper').innerHTML = " ";
-  }
-}
+  } 
 });
 
-  break
-}
-
-
+ * 
  */
+
+
+
+
+
+
+
+/************let isExecuted = false;
+
+function myFunction() {
+  if (!isExecuted) {
+    console.log("Questa riga verrà stampata solo una volta.");
+    // Inserisci qui il resto del codice che vuoi eseguire una sola volta
+    isExecuted = true;
+  } else {
+    console.log("Questa funzione è già stata eseguita.");
+  }
+}
+document.getElementById("myButton").addEventListener("click", myFunction);********TEST BOOLEANE per fx stampaVuoto()*/
+
