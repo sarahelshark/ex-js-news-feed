@@ -192,27 +192,31 @@ function stampaArticoli() {
 //Chiamare la funzione per stampare gli articoli quando la pagina è pronta
 document.addEventListener('DOMContentLoaded', stampaArticoli);
 
+
 /************************FUNZIONE FILTRO ARTICOLI****************************************/
 function filterArticles() {
-	
-  //creo costante per estrapolare value che utilizzero in filter() (voglio filtrare il mio array di oggetti)
-  const selectedType = test.value;
+	const selectedTag = test.value;
+  const filteredArticles = allArticles.filter(article => {
+    return selectedTag === 'Tutti i tags' || article.tags.includes(selectedTag);
+  });
 
-  //Soluzione più semplice
-  // Ciclo attraverso tutti post e nascondo quelli che non corrispondono al tipo selezionato
-  for (let i = 0; i < allArticles.length; i++) {
-  
-    const cardId = `articleContainer_${allArticles.id}`;
-    const card = document.getElementById(cardId);
+  articleWrapperEL.innerHTML = ""; // Pulisci il contenitore
 
-    if (selectedType === 'Tutti i tags' || allArticles[i].tags === selectedType) {
-      stampaArticoli()
-    // mostra la card se la situazione è quella di default con tutte le carte e/o se le icone sono del tipo selezionato
-    } else {
-      console.log('prova') // nascondi la card se la situazione è contraria alla situazione descritta sopra
-    }   
-
-   }
+  if (filteredArticles.length > 0) {
+    filteredArticles.forEach(article => {
+      stampaArticoli();
+      // Qui va il codice per aggiungere ogni articolo al DOM
+    });
+  } else {
+ articleWrapperEL.innerHTML = ""; // Funzione per mostrare il messaggio di "nessun articolo"
+    if( selectedTag === 'Politica'){
+      console.log(selectedTag);
+      stampaVuoto();
+    } else{
+      console.log(selectedTag);
+    }
+   
+  }
 
 
 }
@@ -231,7 +235,6 @@ test.addEventListener('change', filterArticles);
 
 
 
-
 /***************************GENERARE MESSAGGIO VUOTO*************************************/
 
 /**
@@ -242,7 +245,7 @@ function stampaVuoto() {
     
   //inserisco un messaggio che avverte l'utente dell'assenza di posts in merito al filtro scelto    
   //scelgo il luogo dove posizionare il mio nuovo messaggio e creo l'elemento in pagina
-  const wrapperEl = document.getElementById('mainWrapper');
+  const wrapperEl = document.getElementById('articlesWrapper');
   const articleNotAvailable = document.createElement('h3');
   //...le sue classi
   articleNotAvailable.className = 'container-sm mt-3 text-light';
@@ -253,7 +256,16 @@ function stampaVuoto() {
 }
 
 
-
+function neutralizzaVuoto(){
+  const wrapperEl = document.getElementById('articlesWrapper');
+  const articleNotAvailable = document.createElement('h3');
+  //...le sue classi
+  articleNotAvailable.className = 'container-sm mt-3 text-light';
+  //...il suo html con template literal
+  articleNotAvailable.innerHTML = ``; 
+  //..unisco il mio template literal al div che ho creato precedentemente
+  wrapperEl.appendChild(articleNotAvailable);
+}
 
 
 
