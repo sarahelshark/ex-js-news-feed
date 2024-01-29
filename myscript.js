@@ -318,7 +318,7 @@ function restaViaggi(){
   const invisible_id4 = document.getElementById('articleContainer_4');
    invisible_id4.style.display = 'none'
 }
-
+//vedi dopo se riesci a pulire il codice e far diventare la funzione "restaCategoria" con dei cicli una funzione unica 
 
 
 
