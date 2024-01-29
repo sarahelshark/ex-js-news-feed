@@ -10,36 +10,8 @@ window.addEventListener('scroll', () => {
 //style dettagli
 //date method
 
-/*bookmark che cambia al click--step4, ragiono dopo
--------------------------------
--creo una array vuota per inserirci i miei click di bookmark
--procedo con un event listener sui bookmark
-  -al click, devono cambiare aspetto
-  -pusho il click dentro il mio arrai che si userà dopo per creare il filtro dei post salvati 
- //Selezione degli elementi di bookmark sia solidi che regolari
-const solidBookmark = document.querySelector('.fa-solid.fa-bookmark');
-const regularBookmark = document.querySelector('.fa-regular.fa-bookmark'); 
-
-// Seleziona tutti gli elementi di bookmark, sia solidi che regolari
-const allBookmarks = document.querySelectorAll('.fa-bookmark');
 
 
-// Itera su tutti gli elementi di bookmark e aggiungi l'event listener
-allBookmarks.forEach(bookmark => {
-    
-    bookmark.addEventListener('click', function () {
-        // 
-        console.log('Bookmark Clicked');
-        // Add a class
-        solidBookmark.classList.toggle('d-none'); 
-        regularBookmark.classList.toggle('d-none');
-
-           
-    });
-});
-
-
-*/
 /*********************************STRUTTURE DATI************************************************/
 //STEP1- stampo tutti gli articoli in pagina
 //creo una lista di oggetti
@@ -47,7 +19,7 @@ const allArticles = [
   {
       title: 'Scoperta di una nuova specie di papera di gomma',
       content: 'Un breve articolo sulla recente scoperta di una specie di papera di gomma mai vista prima.',
-      tags: ['geo', 'tech'],
+      tags: ['Geo', 'Tech'],
       author: 'Diana Rossi',
       published: new Date('2023-02-11'),
       image: 'rubber-duck.jpg',
@@ -57,7 +29,7 @@ const allArticles = [
   {
       title: 'Esplorando le profondità marine: il mistero degli abissi',
       content: "un viaggio nelle profondità dell'oceano alla scoperta di creature misteriose e inesplorate",
-      tags: ['viaggi', 'geo'],
+      tags: ['Viaggi', 'Geo'],
       author: 'Fabio Mari',
       published: new Date('2023-03-14'),
       image: 'deep-sea.jpg',
@@ -67,7 +39,7 @@ const allArticles = [
   {
       title: 'Viaggio culinario: alla ricerca dei sapori perduti',
       content: 'Esplorazione di tradizioni culinarie dimenticate e la ricerca di sapori autentici.',
-      tags: ['cucina'],
+      tags: ['Cucina'],
       author: 'Marta Bianchi',
       published: new Date('2023-04-20'),
       image: 'kitchen-food.jpg',
@@ -77,7 +49,7 @@ const allArticles = [
   {
       title: 'Arte moderna: oltre i confini convenzionali',
       content: "Un'analisi delle tendenze e delle sfide nell'arte contemporanea, con interviste a artisti emergenti.",
-      tags: ['arte', 'tech'],
+      tags: ['Arte', 'Tech'],
       author: 'Gabriele Neri',
       published: new Date('2023-05-29'),
       image: 'modern-art.jpg',
@@ -87,15 +59,7 @@ const allArticles = [
 ]
 console.table(allArticles)
 /***********************************************ARRAY DEI TAGS DEL MIO ARRAY OBJECT*/
-const tagsSet = new Set();  //approccio per evitare doppioni di tags 
 
-allArticles.forEach(article => {
-  article.tags.forEach(tag => tagsSet.add(tag));
-});
-
-const tagsArray = Array.from(tagsSet);
-
-console.log(tagsArray);
 /************ ******************DYNAMIC SELECT *****************************************/
 /**
  * ## Aggiunge dinamicamente le opzioni alla select.
@@ -106,17 +70,18 @@ function stampaOpzioniSelect() {
   // luogo che voglio popolare
   const selectElement = document.querySelector('.form-select');
 
-  // Array di opzioni che ciclero con forEach
-  const tagsOptions = [
-    'Tutti i tags',
-    'Politica',
-    'Geo',
-    'Tech',
-    'Viaggi',
-    'Cucina'
-  ];
+  const tagsSet = new Set();  //approccio per evitare doppioni di tags 
 
-  tagsOptions.forEach(tag => {
+allArticles.forEach(article => {
+  article.tags.forEach(tag => tagsSet.add(tag));
+});
+
+const tagsArray = Array.from(tagsSet);
+tagsArray.push("Politica");  
+tagsArray.push("Tutti i tags"); 
+console.log(tagsArray);
+
+  tagsArray.forEach(tag => {
     //creo il mio div delle options
     const option = document.createElement('option');
     //...lo riempio col contenuto
@@ -124,6 +89,7 @@ function stampaOpzioniSelect() {
     //lo appendo al luogo dove devo popolare
     selectElement.appendChild(option);
   });
+  
 }
 // Chiamare la funzione quando la pagina è caricata, come ho fatto con gli articoli
 document.addEventListener('DOMContentLoaded', stampaOpzioniSelect);
@@ -160,8 +126,8 @@ function stampaArticoli() {
         <h4 class="font-weight-bold">
           ${article.title}
         </h4>
-        <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none"> </i>
-        <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color"></i>
+        <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none" id="selectedBookmark"> </i>
+        <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color" id="emptyBookmark"></i>
       </div>
       <div class="container-sm d-flex flex-column justify-content-center">
         <article>
@@ -189,7 +155,7 @@ function stampaArticoli() {
   });
 
 }
-//Chiamare la funzione per stampare gli articoli quando la pagina è pronta
+//Chiamare la funzione per stampare gli articoli subito quando la pagina è pronta
 document.addEventListener('DOMContentLoaded', stampaArticoli);
 
 
@@ -199,7 +165,7 @@ function filterArticles() {
   const filteredArticles = allArticles.filter(article => {
     return selectedTag === 'Tutti i tags' || article.tags.includes(selectedTag);
   });
-console.log(filteredArticles)
+
   articleWrapperEL.innerHTML = ""; // Pulisci il contenitore
 
   if (filteredArticles.length > 0) {
@@ -208,28 +174,8 @@ console.log(filteredArticles)
       // Qui va il codice per aggiungere ogni articolo al DOM
     });
   } else {
- articleWrapperEL.innerHTML = ""; // Funzione per mostrare il messaggio di "nessun articolo"
-    if( selectedTag === 'Politica'){
-      console.log(selectedTag);
-      stampaVuoto();
-    } else if ( selectedTag === 'Cucina'){
-      console.log(selectedTag);
-      stampaArticoli();
-      restaCucina();
-    }else if ( selectedTag === 'Geo'){
-      console.log(selectedTag);
-      stampaArticoli() ;
-      restaGeo();
-    }else if ( selectedTag === 'Tech'){
-      console.log(selectedTag);
-      stampaArticoli() ;
-      restaTech();
-    }else if ( selectedTag === 'Viaggi'){
-      console.log(selectedTag);
-      stampaArticoli() ;
-      restaViaggi();
-    }
-   
+    articleWrapperEL.innerHTML = ""; // Funzione per mostrare il 
+    stampaVuoto();
   }
 
 
@@ -243,14 +189,40 @@ const test = document.getElementById("selectEl");
 test.addEventListener('change', filterArticles);
 
 
+/*bookmark che cambia al click--step4
+-------------------------------
+-creo una array vuota per inserirci i miei click di bookmark
+-procedo con un event listener sui bookmark
+  -al click, devono cambiare aspetto
+  -pusho il click dentro il mio arrai che si userà dopo per creare il filtro dei post salvati 
+  function salvaBookmark(){
+  //Selezione degli elementi di bookmark sia solidi che regolari
+ const solidBookmark = document.querySelector('.d-none');
+ 
+ const regularBookmark = document.querySelector('.fa-regular.fa-bookmark'); 
+ // Seleziona tutti gli elementi di bookmark, sia solidi che regolari
+ const allBookmarks = document.querySelectorAll('.fa-bookmark');
+ 
+ // Itera su tutti gli elementi di bookmark e aggiungi l'event listener
+ allBookmarks.forEach(bookmark => {
+     
+     bookmark.addEventListener('click', function () {
+         // 
+         console.log('Bookmark Clicked');
+         // Add a class
+         solidBookmark.classList.toggle('d-none'); 
+         regularBookmark.classList.toggle('d-none');
+ 
+            
+     });
+ });
+return console.log(regularBookmark);
+}
 
-
-
-
-
+salvaBookmark()
+  */
 
 /***************************GENERARE MESSAGGIO VUOTO*************************************/
-
 /**
  * ## Stampa il mio messaggio di vuoto nel DOM
  *
@@ -269,7 +241,7 @@ function stampaVuoto() {
   wrapperEl.appendChild(articleNotAvailable);
 }
 
-
+//da cancellare dopo, non mi serve più
 function neutralizzaVuoto(){
   const wrapperEl = document.getElementById('articlesWrapper');
   const articleNotAvailable = document.createElement('h3');
@@ -281,6 +253,7 @@ function neutralizzaVuoto(){
   wrapperEl.appendChild(articleNotAvailable);
 }
 
+//serie di funzioni da documentare 
 function restaCucina(){
  const invisible_id1 = document.getElementById('articleContainer_1');
   invisible_id1.style.display = 'none'
@@ -321,11 +294,6 @@ function restaViaggi(){
 //vedi dopo se riesci a pulire il codice e far diventare la funzione "restaCategoria" con dei cicli una funzione unica 
 
 
-
-
-
-
-
 /**old
  * // step 3,gestire  il cambio della selezione nel filtro
 const test = document.getElementById("selectEl");
@@ -344,11 +312,6 @@ test.addEventListener("change", function() {
 
  * 
  */
-
-
-
-
-
 
 
 /************let isExecuted = false;
