@@ -85,7 +85,7 @@ const allArticles = [
       id: '4'
   }
 ]
-
+console.table(allArticles)
 /***********************************************ARRAY DEI TAGS DEL MIO ARRAY OBJECT*/
 const tagsSet = new Set();  //approccio per evitare doppioni di tags 
 
@@ -199,7 +199,7 @@ function filterArticles() {
   const filteredArticles = allArticles.filter(article => {
     return selectedTag === 'Tutti i tags' || article.tags.includes(selectedTag);
   });
-
+console.log(filteredArticles)
   articleWrapperEL.innerHTML = ""; // Pulisci il contenitore
 
   if (filteredArticles.length > 0) {
@@ -212,8 +212,22 @@ function filterArticles() {
     if( selectedTag === 'Politica'){
       console.log(selectedTag);
       stampaVuoto();
-    } else{
+    } else if ( selectedTag === 'Cucina'){
       console.log(selectedTag);
+      stampaArticoli();
+      restaCucina();
+    }else if ( selectedTag === 'Geo'){
+      console.log(selectedTag);
+      stampaArticoli() ;
+      restaGeo();
+    }else if ( selectedTag === 'Tech'){
+      console.log(selectedTag);
+      stampaArticoli() ;
+      restaTech();
+    }else if ( selectedTag === 'Viaggi'){
+      console.log(selectedTag);
+      stampaArticoli() ;
+      restaViaggi();
     }
    
   }
@@ -267,7 +281,43 @@ function neutralizzaVuoto(){
   wrapperEl.appendChild(articleNotAvailable);
 }
 
+function restaCucina(){
+ const invisible_id1 = document.getElementById('articleContainer_1');
+  invisible_id1.style.display = 'none'
 
+  const invisible_id2 = document.getElementById('articleContainer_2');
+  invisible_id2.style.display = 'none'
+
+  const invisible_id4 = document.getElementById('articleContainer_4');
+  invisible_id4.style.display = 'none'
+}
+
+function restaGeo(){
+   const invisible_id3 = document.getElementById('articleContainer_3');
+   invisible_id3.style.display = 'none'
+
+   const invisible_id4 = document.getElementById('articleContainer_4');
+   invisible_id4.style.display = 'none'
+}
+
+function restaTech(){
+  const invisible_id2 = document.getElementById('articleContainer_2');
+  invisible_id2.style.display = 'none'
+
+  const invisible_id3 = document.getElementById('articleContainer_3');
+  invisible_id3.style.display = 'none'
+}
+
+function restaViaggi(){
+  const invisible_id1 = document.getElementById('articleContainer_1');
+  invisible_id1.style.display = 'none'
+
+  const invisible_id3 = document.getElementById('articleContainer_3');
+  invisible_id3.style.display = 'none'
+
+  const invisible_id4 = document.getElementById('articleContainer_4');
+   invisible_id4.style.display = 'none'
+}
 
 
 
