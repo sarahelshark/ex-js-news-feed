@@ -77,8 +77,11 @@ allArticles.forEach(article => {
 });
 
 const tagsArray = Array.from(tagsSet);
-tagsArray.push("Politica");  
-tagsArray.push("Tutti i tags"); 
+tagsArray.unshift("Politica");  
+tagsArray.unshift("Tutti i tags"); 
+
+
+
 console.log(tagsArray);
 
   tagsArray.forEach(tag => {
