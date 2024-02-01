@@ -164,10 +164,13 @@ function stampaArticoli() {
 /************************FUNZIONE FILTRO ARTICOLI****************************************/
 function filterArticles() {
     const selectedTag = test.value;
-
-  const filteredArticles = allArticles.filter(article => {
-    return selectedTag === 'Tutti i tags' || article.tags.includes(selectedTag);
-  });
+    
+    let filteredArticles;
+    if (selectedTag === 'Tutti i tags') {
+      filteredArticles = allArticles; // se 'Tutti i tags' è selezionato, mostra tutti gli articoli
+    } else {
+      filteredArticles = allArticles.filter(article => article.tags.includes(selectedTag));
+    }
 
   articleWrapperEL.innerHTML = ""; // Pulisci il contenitore
 
