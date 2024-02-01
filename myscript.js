@@ -160,6 +160,7 @@ function stampaArticoli() {
 }
 
 
+
 /************************FUNZIONE FILTRO ARTICOLI****************************************/
 function filterArticles() {
     const selectedTag = test.value;
@@ -172,7 +173,11 @@ function filterArticles() {
 
   if (filteredArticles.length > 0) {
     filteredArticles.forEach(article => {
-      stampaArticoli()
+      articleWrapperEL.innerHTML = ""; 
+      stampaArticoli();
+       if (selectedTag === 'geo'&& 'cucina' && 'tech' && 'viaggi' &&'arte'||article.tags.includes(selectedTag) ){
+        console.log(` ${selectedTag} filtrato correttamente`);
+       }
       // Qui va il codice per aggiungere ogni articolo al DOM
     });
   } else {
@@ -188,7 +193,9 @@ function filterArticles() {
 //variabile + event listener al 'change'
 const test = document.getElementById("selectEl");
 //gestire il cambiamento della select direttamente con la mia funzione 
-test.addEventListener('change', filterArticles);
+test.addEventListener('change', filterArticles );
+
+
 
 
 /***************************GENERARE MESSAGGIO VUOTO*************************************/
