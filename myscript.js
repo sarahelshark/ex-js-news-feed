@@ -261,21 +261,27 @@ CheckBox.addEventListener('click', function(){
 
 
 
+
+
 })
 
 
+let savedPosts = []
 
 for  ( let i = 0 ; i< allArticles.length; i++) {
 
   let selectedBookmark = document.querySelectorAll('.fa-solid.fa-bookmark.fa-xl.mt-3.custom-txt-color');
-let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
+  let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
 
-unselectedBookmark[i].addEventListener('click',function(){
-console.log('funziona');
+  unselectedBookmark[i].addEventListener('click',function(){
+      console.log('funziona');
 
-unselectedBookmark[i].classList.add('d-none');
-selectedBookmark[i].classList.remove('d-none')
+    unselectedBookmark[i].classList.add('d-none');
+    selectedBookmark[i].classList.remove('d-none');
 
+    savedPosts.push(selectedBookmark[i]);
+    
+console.log(savedPosts);
 })
 }
 
