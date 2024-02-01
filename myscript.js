@@ -58,7 +58,10 @@ const allArticles = [
   }
 ]
 console.table(allArticles)
-/***********************************************ARRAY DEI TAGS DEL MIO ARRAY OBJECT*/
+//creo il luogo in cui andrò a stampare successivamente i miei articoli e filtri
+const articleWrapperEL =  document.getElementById('articlesWrapper');
+stampaOpzioniSelect();
+stampaArticoli();
 
 /************ ******************DYNAMIC SELECT *****************************************/
 /**
@@ -78,9 +81,8 @@ allArticles.forEach(article => {
 
 const tagsArray = Array.from(tagsSet);
 
-tagsArray.unshift("Tutti i tags"); 
 tagsArray.unshift("Politica");  
-
+tagsArray.unshift("Tutti i tags"); 
 console.log(tagsArray);
 
   tagsArray.forEach(tag => {
@@ -94,12 +96,11 @@ console.log(tagsArray);
   
 }
 // Chiamare la funzione quando la pagina è caricata, come ho fatto con gli articoli
-document.addEventListener('DOMContentLoaded', stampaOpzioniSelect);
+
 
 /*****************************GENERARE LE news vecchio metodo*******************/
-//creo il luogo in cui andrò a stampare successivamente i miei articoli e filtri
-const articleWrapperEL =  document.getElementById('articlesWrapper');
-//creo funzione che sarà richiamata al caricamento della pagina per stampare tutti gli articoli in pagina
+
+
 /**
  * ## Stampa i miei oggetti sul DOM, TUTTI 
  *@param {Array} articles array di oggetti da stampare sul DOM con template literal
@@ -157,13 +158,12 @@ function stampaArticoli() {
   });
 
 }
-//Chiamare la funzione per stampare gli articoli subito quando la pagina è pronta
-document.addEventListener('DOMContentLoaded', stampaArticoli);
 
 
 /************************FUNZIONE FILTRO ARTICOLI****************************************/
 function filterArticles() {
-	const selectedTag = test.value;
+    const selectedTag = test.value;
+
   const filteredArticles = allArticles.filter(article => {
     return selectedTag === 'Tutti i tags' || article.tags.includes(selectedTag);
   });
@@ -172,7 +172,7 @@ function filterArticles() {
 
   if (filteredArticles.length > 0) {
     filteredArticles.forEach(article => {
-      stampaArticoli();
+      stampaArticoli()
       // Qui va il codice per aggiungere ogni articolo al DOM
     });
   } else {
@@ -181,7 +181,7 @@ function filterArticles() {
   }
 
 
-}
+}  
 
 /********************TRIGGERO CAMBIAMENTO****************************************/
 
@@ -190,39 +190,6 @@ const test = document.getElementById("selectEl");
 //gestire il cambiamento della select direttamente con la mia funzione 
 test.addEventListener('change', filterArticles);
 
-
-/*bookmark che cambia al click--step4
--------------------------------
--creo una array vuota per inserirci i miei click di bookmark
--procedo con un event listener sui bookmark
-  -al click, devono cambiare aspetto
-  -pusho il click dentro il mio arrai che si userà dopo per creare il filtro dei post salvati 
-  function salvaBookmark(){
-  //Selezione degli elementi di bookmark sia solidi che regolari
- const solidBookmark = document.querySelector('.d-none');
- 
- const regularBookmark = document.querySelector('.fa-regular.fa-bookmark'); 
- // Seleziona tutti gli elementi di bookmark, sia solidi che regolari
- const allBookmarks = document.querySelectorAll('.fa-bookmark');
- 
- // Itera su tutti gli elementi di bookmark e aggiungi l'event listener
- allBookmarks.forEach(bookmark => {
-     
-     bookmark.addEventListener('click', function () {
-         // 
-         console.log('Bookmark Clicked');
-         // Add a class
-         solidBookmark.classList.toggle('d-none'); 
-         regularBookmark.classList.toggle('d-none');
- 
-            
-     });
- });
-return console.log(regularBookmark);
-}
-
-salvaBookmark()
-  */
 
 /***************************GENERARE MESSAGGIO VUOTO*************************************/
 /**
@@ -243,89 +210,4 @@ function stampaVuoto() {
   wrapperEl.appendChild(articleNotAvailable);
 }
 
-//da cancellare dopo, non mi serve più
-function neutralizzaVuoto(){
-  const wrapperEl = document.getElementById('articlesWrapper');
-  const articleNotAvailable = document.createElement('h3');
-  //...le sue classi
-  articleNotAvailable.className = 'container-sm mt-3 text-light';
-  //...il suo html con template literal
-  articleNotAvailable.innerHTML = ``; 
-  //..unisco il mio template literal al div che ho creato precedentemente
-  wrapperEl.appendChild(articleNotAvailable);
-}
-
-//serie di funzioni da documentare 
-function restaCucina(){
- const invisible_id1 = document.getElementById('articleContainer_1');
-  invisible_id1.style.display = 'none'
-
-  const invisible_id2 = document.getElementById('articleContainer_2');
-  invisible_id2.style.display = 'none'
-
-  const invisible_id4 = document.getElementById('articleContainer_4');
-  invisible_id4.style.display = 'none'
-}
-
-function restaGeo(){
-   const invisible_id3 = document.getElementById('articleContainer_3');
-   invisible_id3.style.display = 'none'
-
-   const invisible_id4 = document.getElementById('articleContainer_4');
-   invisible_id4.style.display = 'none'
-}
-
-function restaTech(){
-  const invisible_id2 = document.getElementById('articleContainer_2');
-  invisible_id2.style.display = 'none'
-
-  const invisible_id3 = document.getElementById('articleContainer_3');
-  invisible_id3.style.display = 'none'
-}
-
-function restaViaggi(){
-  const invisible_id1 = document.getElementById('articleContainer_1');
-  invisible_id1.style.display = 'none'
-
-  const invisible_id3 = document.getElementById('articleContainer_3');
-  invisible_id3.style.display = 'none'
-
-  const invisible_id4 = document.getElementById('articleContainer_4');
-   invisible_id4.style.display = 'none'
-}
-//vedi dopo se riesci a pulire il codice e far diventare la funzione "restaCategoria" con dei cicli una funzione unica 
-
-
-/**old
- * // step 3,gestire  il cambio della selezione nel filtro
-const test = document.getElementById("selectEl");
-console.log(test)
-
-test.addEventListener("change", function() {
-
- // Reimposto la variabile quando la selezione cambia
- if (test.value !== "Politica") {
-  document.getElementById('articlesWrapper').innerHTML = " ";
-  stampaArticoli();
-}else if (test.value === "Politica") {
-    document.getElementById('articlesWrapper').innerHTML = " ";
-  } 
-});
-
- * 
- */
-
-
-/************let isExecuted = false;
-
-function myFunction() {
-  if (!isExecuted) {
-    console.log("Questa riga verrà stampata solo una volta.");
-    // Inserisci qui il resto del codice che vuoi eseguire una sola volta
-    isExecuted = true;
-  } else {
-    console.log("Questa funzione è già stata eseguita.");
-  }
-}
-document.getElementById("myButton").addEventListener("click", myFunction);********TEST BOOLEANE per fx stampaVuoto()*/
 
