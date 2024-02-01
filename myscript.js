@@ -65,9 +65,9 @@ stampaArticoli();
 
 /************ ******************DYNAMIC SELECT *****************************************/
 /**
- * ## Aggiunge dinamicamente le opzioni alla select.
- *
- * @function
+ *### Aggiunge dinamicamente le opzioni alla select.
+ *@param {Array} articles array di oggetti dove posso ciclare ==> .tags
+ * @function stampa opzioni select
  */
 function stampaOpzioniSelect() {
   // luogo che voglio popolare
@@ -95,14 +95,12 @@ console.log(tagsArray);
   });
   
 }
-// Chiamare la funzione quando la pagina è caricata, come ho fatto con gli articoli
 
-
-/*****************************GENERARE LE news vecchio metodo*******************/
 
 
 /**
- * ## Stampa i miei oggetti sul DOM, TUTTI 
+ *
+ * ### Stampa i miei oggetti sul DOM, TUTTI 
  *@param {Array} articles array di oggetti da stampare sul DOM con template literal
  * @function   stampa articoli
  */
@@ -161,7 +159,11 @@ function stampaArticoli() {
 
 
 
-/************************FUNZIONE FILTRO ARTICOLI****************************************/
+/**
+   *### filtra e solo dopo Stampa i miei oggetti sul DOM
+   *@param {Array} articles array di oggetti da stampare sul DOM con template literal
+   * @function   filtra&stampa articoli
+   */
 function filterArticles() {
   const selectedTag = test.value;
 
@@ -227,11 +229,11 @@ test.addEventListener('change', filterArticles );
 
 
 
-/***************************GENERARE MESSAGGIO VUOTO*************************************/
 /**
- * ## Stampa il mio messaggio di vuoto nel DOM
- *
- */
+   * ## stampa il mio messaggio di VUOTO nel DOM
+   *
+   * @function   crea nuovo messaggio in pagina 
+   */
 function stampaVuoto() {
     
   //inserisco un messaggio che avverte l'utente dell'assenza di posts in merito al filtro scelto    
