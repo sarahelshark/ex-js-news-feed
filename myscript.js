@@ -1,4 +1,4 @@
-window.addEventListener('scroll', () => {
+/*window.addEventListener('scroll', () => {
   console.log("scrolled");
 });
 //alla fine //scrollbar che si vede solo allo scroll
@@ -265,7 +265,7 @@ CheckBox.addEventListener('click', function(){
 
 })
 
-
+//array vuoto di supporto per creare una nuova lista dei click
 let savedPosts = []
 
 for  ( let i = 0 ; i< allArticles.length; i++) {
@@ -274,15 +274,16 @@ for  ( let i = 0 ; i< allArticles.length; i++) {
   let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
 
   unselectedBookmark[i].addEventListener('click',function(){
-      console.log('funziona');
+    //console.log('funziona');
 
+    //feedback visivo di 'click' sul bookmark
     unselectedBookmark[i].classList.add('d-none');
     selectedBookmark[i].classList.remove('d-none');
 
+    //pusho i miei click sull'array di supporto
     savedPosts.push(selectedBookmark[i]);
-    
-console.log(savedPosts);
+   
 })
 }
 
-
+ console.log(savedPosts);
