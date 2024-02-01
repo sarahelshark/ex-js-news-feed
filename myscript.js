@@ -163,33 +163,59 @@ function stampaArticoli() {
 
 /************************FUNZIONE FILTRO ARTICOLI****************************************/
 function filterArticles() {
-    const selectedTag = test.value;
-    
-    let filteredArticles;
-    if (selectedTag === 'Tutti i tags') {
-      filteredArticles = allArticles; // se 'Tutti i tags' è selezionato, mostra tutti gli articoli
-    } else {
-      filteredArticles = allArticles.filter(article => article.tags.includes(selectedTag));
-    }
+  const selectedTag = test.value;
 
-  articleWrapperEL.innerHTML = ""; // Pulisci il contenitore
+  let filteredArticles;
+  if (selectedTag === 'Tutti i tags') {
+    filteredArticles = allArticles; // se 'Tutti i tags' è selezionato, mostra tutti gli articoli
+  } else {
+    filteredArticles = allArticles.filter(article => article.tags.includes(selectedTag));
+  }
 
+  articleWrapperEL.innerHTML = ""; // Svuoto il contenitore
+
+  //logica simile alla funzione di stampa articoli, ma mi stampa TUTTI quelli filtrati 
   if (filteredArticles.length > 0) {
     filteredArticles.forEach(article => {
-      articleWrapperEL.innerHTML = ""; 
-      stampaArticoli();
-       if (selectedTag === 'geo'&& 'cucina' && 'tech' && 'viaggi' &&'arte'||article.tags.includes(selectedTag) ){
-        console.log(` ${selectedTag} filtrato correttamente`);
-       }
-      // Qui va il codice per aggiungere ogni articolo al DOM
+      const formattedDate = article.published.toLocaleDateString('it-IT', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+      const articleContainer = document.createElement('div');
+      articleContainer.className = 'container-sm mt-3 bg-light p-2';
+      articleContainer.id = `articleContainer_${article.id}`;
+
+      articleContainer.innerHTML = `
+        <div class="container-sm d-flex justify-content-between flex-nowrap">
+          <h4 class="font-weight-bold">${article.title}</h4>
+          <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none" id="selectedBookmark"></i>
+          <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color" id="emptyBookmark"></i>
+        </div>
+        <div class="container-sm d-flex flex-column justify-content-center">
+          <article>
+            <div class="author font-weight-bold">Pubblicato da ${article.author}</div>
+            <div class="date">in data ${formattedDate}</div>
+          </article>
+          <p>${article.content}</p>
+          <img src="./images/${article.image}" alt="${article.alt}">
+          <div class="badges mt-1">
+            ${article.tags.map(tag => `
+            <span class="badge custom-${tag}-badge p-1 rounded-4 text-light font-weight-normal shadow">${tag}</span>
+            `).join('')}
+          </div>
+        </div>
+      `; 
+      articleWrapperEL.appendChild(articleContainer);
     });
-  } else {
-    articleWrapperEL.innerHTML = ""; // Funzione per mostrare il 
-    stampaVuoto();
-  }
+} else {
+  articleWrapperEL.innerHTML = "";
+  stampaVuoto(); // Funzione per mostrare il messaggio in pagina
+}
 
 
 }  
+
 
 /********************TRIGGERO CAMBIAMENTO****************************************/
 
