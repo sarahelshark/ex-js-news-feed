@@ -259,13 +259,14 @@ let CheckBox = document.getElementById('flexCheckDefault');
 CheckBox.addEventListener('click', function(){
   console.log('clicked');
 
-
-
+  if (selectedBookmark = true) {
+    articleWrapperEL.innerHTML = ""; // Svuoto il contenitore
+  } 
 
 
 })
 
-//array vuoto di supporto per creare una nuova lista dei click
+//array vuoto di supporto per creare una nuova lista dei clicked bookmarks
 let savedPosts = []
 
 for  ( let i = 0 ; i< allArticles.length; i++) {
@@ -285,5 +286,7 @@ for  ( let i = 0 ; i< allArticles.length; i++) {
    
 })
 }
-
  console.log(savedPosts);
+
+
+ 
