@@ -127,8 +127,8 @@ function stampaArticoli() {
         <h4 class="font-weight-bold">
           ${article.title}
         </h4>
-        <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none" id="selectedBookmark"> </i>
-        <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color" id="emptyBookmark"></i>
+        <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none" > </i>
+        <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color" ></i>
       </div>
       <div class="container-sm d-flex flex-column justify-content-center">
         <article>
@@ -191,8 +191,8 @@ function filterArticles() {
       articleContainer.innerHTML = `
         <div class="container-sm d-flex justify-content-between flex-nowrap">
           <h4 class="font-weight-bold">${article.title}</h4>
-          <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none" id="selectedBookmark"></i>
-          <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color" id="emptyBookmark"></i>
+          <i class="fa-solid fa-bookmark fa-xl mt-3 custom-txt-color d-none" ></i>
+          <i class="fa-regular fa-bookmark fa-xl mt-3 custom-txt-color" ></i>
         </div>
         <div class="container-sm d-flex flex-column justify-content-center">
           <article>
@@ -249,3 +249,14 @@ function stampaVuoto() {
 }
 
 
+/***********************************************************/
+//bookmarks
+
+//event listener al checkbox, che in un secondo momento farà partire il secondo filtraggio
+let CheckBox = document.getElementById('flexCheckDefault');
+
+CheckBox.addEventListener('click', function(){
+  console.log('clicked');
+})
+
+let unselectedBookmark = document.querySelectorAll
