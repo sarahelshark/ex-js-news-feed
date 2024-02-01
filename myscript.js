@@ -170,6 +170,7 @@ function filterArticles() {
   let filteredArticles;
   if (selectedTag === 'Tutti i tags') {
     filteredArticles = allArticles; // se 'Tutti i tags' è selezionato, mostra tutti gli articoli
+    
   } else {
     filteredArticles = allArticles.filter(article => article.tags.includes(selectedTag));
   }
@@ -257,6 +258,25 @@ let CheckBox = document.getElementById('flexCheckDefault');
 
 CheckBox.addEventListener('click', function(){
   console.log('clicked');
+
+
+
 })
 
-let unselectedBookmark = document.querySelectorAll
+
+
+for  ( let i = 0 ; i< allArticles.length; i++) {
+
+  let selectedBookmark = document.querySelectorAll('.fa-solid.fa-bookmark.fa-xl.mt-3.custom-txt-color');
+let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
+
+unselectedBookmark[i].addEventListener('click',function(){
+console.log('funziona');
+
+unselectedBookmark[i].classList.add('d-none');
+selectedBookmark[i].classList.remove('d-none')
+
+})
+}
+
+
