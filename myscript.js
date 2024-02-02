@@ -249,8 +249,7 @@ function stampaVuoto() {
   wrapperEl.appendChild(articleNotAvailable);
 }
 
-
-//***********************************************************/
+/***********************************************************/
 //bookmarks
 
 
@@ -264,21 +263,11 @@ CheckBox.addEventListener('click', function(e){
     //console.log('ok')
     console.log(savedPosts);
     //Pulisci il contenuto attuale
-
-    let Selected = [];
-
-    allArticles.map(()=>{
-
-    return Selected.push( allArticles.includes(!savedPosts));
-    })
-
-    if(Selected = savedPosts){
-      console.log();
-    }
-    
+    keepPostsSaved()
 
   }
 })
+
 
 
 //gestione array di articoli selezionati
@@ -307,7 +296,14 @@ for  ( let i = 0 ; i< allArticles.length; i++) {
 }
 
 
-
+function keepPostsSaved(ArticlesArray,PostsArray){
+  
+  if (!allArticles.includes(savedPosts)){
+    console.log('funziona')
+    articleWrapperEL.innerHTML = "";
+  }
+  
+}
 
 
 
