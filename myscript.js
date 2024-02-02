@@ -250,31 +250,49 @@ function stampaVuoto() {
 }
 
 
-/***********************************************************/
+//***********************************************************/
 //bookmarks
 
-//event listener al checkbox, che in un secondo momento farà partire il secondo filtraggio
+
 let CheckBox = document.getElementById('flexCheckDefault');
+//gestione evento al click
 
-CheckBox.addEventListener('click', function(){
-  console.log('clicked');
-
-  if (selectedBookmark = true) {
-    articleWrapperEL.innerHTML = ""; // Svuoto il contenitore
-  } 
+CheckBox.addEventListener('click', function(e){
 
 
+  if (savedPosts.length > 0){
+    //console.log('ok')
+    console.log(savedPosts);
+    //Pulisci il contenuto attuale
+
+    let Selected = [];
+
+    allArticles.map(()=>{
+
+    return Selected.push( allArticles.includes(!savedPosts));
+    })
+
+    if(Selected = savedPosts){
+      console.log();
+    }
+    
+
+  }
 })
+
+
+//gestione array di articoli selezionati
 
 //array vuoto di supporto per creare una nuova lista dei clicked bookmarks
 let savedPosts = []
 
 for  ( let i = 0 ; i< allArticles.length; i++) {
 
+
   let selectedBookmark = document.querySelectorAll('.fa-solid.fa-bookmark.fa-xl.mt-3.custom-txt-color');
   let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
 
-  unselectedBookmark[i].addEventListener('click',function(){
+  unselectedBookmark[i].addEventListener('click',function(e){
     //console.log('funziona');
 
     //feedback visivo di 'click' sul bookmark
@@ -284,9 +302,14 @@ for  ( let i = 0 ; i< allArticles.length; i++) {
     //pusho i miei click sull'array di supporto
     savedPosts.push(selectedBookmark[i]);
    
+   
 })
 }
- console.log(savedPosts);
+
+
+
+
+
 
 
  
