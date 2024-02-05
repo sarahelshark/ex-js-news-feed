@@ -263,6 +263,7 @@ CheckBox.addEventListener('click', function (e) {
     //console.log('ok')
     console.log(savedPosts);
     //Pulisci il contenuto attuale
+   // keepPostsSaved();
 
 
   }
@@ -280,7 +281,7 @@ let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-x
 
 //console.log(selectedPost,selectedBookmark, unselectedBookmark);
 let emptyBookmarkList = Array.from(unselectedBookmark);
-console.log(emptyBookmarkList); // trasformo node list in un array che posso utilizzare 
+//console.log(emptyBookmarkList); // trasformo node list in un array che posso utilizzare 
 let fullBookmarkList = Array.from(selectedBookmark);
 //console.log(fullBookmarkList); 
 
@@ -289,28 +290,29 @@ emptyBookmarkList.forEach((selectedPost) => {
 
   selectedPost.addEventListener('click', function (e) {
     console.log('funziona');
+
+    //feedback visivo di 'click' sul bookmark
+    selectedPost.classList.add('d-none');
+
+    //pusho i miei click sull'array di supporto
+    savedPosts.push(selectedPost);
+    
+
   })
 
 });
-
+//mantengo ciclo for per colorare i miei bookmark che faccio scomparire nel forEach di emptyBookmarkList
 for (let i = 0; i < allArticles.length; i++) {
-
-  let selectedBookmark = document.querySelectorAll('.fa-solid.fa-bookmark.fa-xl.mt-3.custom-txt-color');
   let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
 
   unselectedBookmark[i].addEventListener('click', function (e) {
-    //console.log('funziona');
 
-    //feedback visivo di 'click' sul bookmark
-    unselectedBookmark[i].classList.add('d-none');
+    //feedback visivo di 'click' sul bookmark, riempimento 
     selectedBookmark[i].classList.remove('d-none');
-
-    //pusho i miei click sull'array di supporto
-    savedPosts.push(selectedBookmark[i]);
-
 
   })
 }
+
 
 
 function keepPostsSaved(ArticlesArray, PostsArray) {
