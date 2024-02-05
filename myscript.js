@@ -17,49 +17,49 @@
 //creo una lista di oggetti
 const allArticles = [
   {
-      title: 'Scoperta di una nuova specie di papera di gomma',
-      content: 'Un breve articolo sulla recente scoperta di una specie di papera di gomma mai vista prima.',
-      tags: ['geo', 'tech'],
-      author: 'Diana Rossi',
-      published: new Date('2023-02-11'),
-      image: 'rubber-duck.jpg',
-      alt: 'rubber duck in a river',
-      id: '1'
+    title: 'Scoperta di una nuova specie di papera di gomma',
+    content: 'Un breve articolo sulla recente scoperta di una specie di papera di gomma mai vista prima.',
+    tags: ['geo', 'tech'],
+    author: 'Diana Rossi',
+    published: new Date('2023-02-11'),
+    image: 'rubber-duck.jpg',
+    alt: 'rubber duck in a river',
+    id: '1'
   },
   {
-      title: 'Esplorando le profondità marine: il mistero degli abissi',
-      content: "un viaggio nelle profondità dell'oceano alla scoperta di creature misteriose e inesplorate",
-      tags: ['viaggi', 'geo'],
-      author: 'Fabio Mari',
-      published: new Date('2023-03-14'),
-      image: 'deep-sea.jpg',
-      alt: 'deep sea',
-      id: '2'       
+    title: 'Esplorando le profondità marine: il mistero degli abissi',
+    content: "un viaggio nelle profondità dell'oceano alla scoperta di creature misteriose e inesplorate",
+    tags: ['viaggi', 'geo'],
+    author: 'Fabio Mari',
+    published: new Date('2023-03-14'),
+    image: 'deep-sea.jpg',
+    alt: 'deep sea',
+    id: '2'
   },
   {
-      title: 'Viaggio culinario: alla ricerca dei sapori perduti',
-      content: 'Esplorazione di tradizioni culinarie dimenticate e la ricerca di sapori autentici.',
-      tags: ['cucina'],
-      author: 'Marta Bianchi',
-      published: new Date('2023-04-20'),
-      image: 'kitchen-food.jpg',
-      alt: 'a table with tomatoes, a knife in the middle and some pot herbs',
-      id: '3'
+    title: 'Viaggio culinario: alla ricerca dei sapori perduti',
+    content: 'Esplorazione di tradizioni culinarie dimenticate e la ricerca di sapori autentici.',
+    tags: ['cucina'],
+    author: 'Marta Bianchi',
+    published: new Date('2023-04-20'),
+    image: 'kitchen-food.jpg',
+    alt: 'a table with tomatoes, a knife in the middle and some pot herbs',
+    id: '3'
   },
   {
-      title: 'Arte moderna: oltre i confini convenzionali',
-      content: "Un'analisi delle tendenze e delle sfide nell'arte contemporanea, con interviste a artisti emergenti.",
-      tags: ['arte', 'tech'],
-      author: 'Gabriele Neri',
-      published: new Date('2023-05-29'),
-      image: 'modern-art.jpg',
-      alt: 'wall full of graffiti, street art',
-      id: '4'
+    title: 'Arte moderna: oltre i confini convenzionali',
+    content: "Un'analisi delle tendenze e delle sfide nell'arte contemporanea, con interviste a artisti emergenti.",
+    tags: ['arte', 'tech'],
+    author: 'Gabriele Neri',
+    published: new Date('2023-05-29'),
+    image: 'modern-art.jpg',
+    alt: 'wall full of graffiti, street art',
+    id: '4'
   }
 ]
 console.table(allArticles)
 //creo il luogo in cui andrò a stampare successivamente i miei articoli e filtri
-const articleWrapperEL =  document.getElementById('articlesWrapper');
+const articleWrapperEL = document.getElementById('articlesWrapper');
 stampaOpzioniSelect();
 stampaArticoli();
 
@@ -75,15 +75,15 @@ function stampaOpzioniSelect() {
 
   const tagsSet = new Set();  //approccio per evitare doppioni di tags 
 
-allArticles.forEach(article => {
-  article.tags.forEach(tag => tagsSet.add(tag));
-});
+  allArticles.forEach(article => {
+    article.tags.forEach(tag => tagsSet.add(tag));
+  });
 
-const tagsArray = Array.from(tagsSet);
+  const tagsArray = Array.from(tagsSet);
 
-tagsArray.unshift("Politica");  
-tagsArray.unshift("Tutti i tags"); 
-console.log(tagsArray);
+  tagsArray.unshift("Politica");
+  tagsArray.unshift("Tutti i tags");
+  console.log(tagsArray);
 
   tagsArray.forEach(tag => {
     //creo il mio div delle options
@@ -93,7 +93,7 @@ console.log(tagsArray);
     //lo appendo al luogo dove devo popolare
     selectElement.appendChild(option);
   });
-  
+
 }
 
 
@@ -105,23 +105,23 @@ console.log(tagsArray);
  * @function   stampa articoli
  */
 function stampaArticoli() {
-//Pulisci il contenuto attuale
+  //Pulisci il contenuto attuale
   articleWrapperEL.innerHTML = "";
-//
+  //
   allArticles.forEach(article => {
     //creo un contenitore del mio template literal
     const articleContainer = document.createElement('div');
     //...le sue classi
     articleContainer.className = 'container-sm mt-3 bg-light p-2';
     //il suo id, che poi uso per nascondere le news
-    articleContainer.id = `articleContainer_${article.id}`; 
+    articleContainer.id = `articleContainer_${article.id}`;
     //modifico il formato delle date
     const formattedDate = article.published.toLocaleDateString('it-IT', {
       day: '2-digit',
       month: '2-digit',
       year: 'numeric'
     });
-  // il suo html con template literal
+    // il suo html con template literal
     articleContainer.innerHTML = `
       <div class="container-sm d-flex justify-content-between flex-nowrap">
         <h4 class="font-weight-bold">
@@ -150,7 +150,7 @@ function stampaArticoli() {
             </span>`).join('')}
         </div>
       </div>
-    `; 
+    `;
     //unisco il mio template literal al div che ho creato precedentemente
     articleWrapperEL.appendChild(articleContainer);
   });
@@ -170,7 +170,7 @@ function filterArticles() {
   let filteredArticles;
   if (selectedTag === 'Tutti i tags') {
     filteredArticles = allArticles; // se 'Tutti i tags' è selezionato, mostra tutti gli articoli
-    
+
   } else {
     filteredArticles = allArticles.filter(article => article.tags.includes(selectedTag));
   }
@@ -208,16 +208,16 @@ function filterArticles() {
             `).join('')}
           </div>
         </div>
-      `; 
+      `;
       articleWrapperEL.appendChild(articleContainer);
     });
-} else {
-  articleWrapperEL.innerHTML = "";
-  stampaVuoto(); // Funzione per mostrare il messaggio in pagina
+  } else {
+    articleWrapperEL.innerHTML = "";
+    stampaVuoto(); // Funzione per mostrare il messaggio in pagina
+  }
+
+
 }
-
-
-}  
 
 
 /********************TRIGGERO CAMBIAMENTO****************************************/
@@ -225,7 +225,7 @@ function filterArticles() {
 //variabile + event listener al 'change'
 const test = document.getElementById("selectEl");
 //gestire il cambiamento della select direttamente con la mia funzione 
-test.addEventListener('change', filterArticles );
+test.addEventListener('change', filterArticles);
 
 
 
@@ -236,7 +236,7 @@ test.addEventListener('change', filterArticles );
    * @function   crea nuovo messaggio in pagina 
    */
 function stampaVuoto() {
-    
+
   //inserisco un messaggio che avverte l'utente dell'assenza di posts in merito al filtro scelto    
   //scelgo il luogo dove posizionare il mio nuovo messaggio e creo l'elemento in pagina
   const wrapperEl = document.getElementById('articlesWrapper');
@@ -244,7 +244,7 @@ function stampaVuoto() {
   //...le sue classi
   articleNotAvailable.className = 'container-sm mt-3 text-light';
   //...il suo html con template literal
-  articleNotAvailable.innerHTML = `No news available.  `; 
+  articleNotAvailable.innerHTML = `No news available.  `;
   //..unisco il mio template literal al div che ho creato precedentemente
   wrapperEl.appendChild(articleNotAvailable);
 }
@@ -256,14 +256,14 @@ function stampaVuoto() {
 let CheckBox = document.getElementById('flexCheckDefault');
 //gestione evento al click
 
-CheckBox.addEventListener('click', function(e){
+CheckBox.addEventListener('click', function (e) {
 
 
-  if (savedPosts.length > 0){
+  if (savedPosts.length > 0) {
     //console.log('ok')
     console.log(savedPosts);
     //Pulisci il contenuto attuale
-    keepPostsSaved()
+
 
   }
 })
@@ -273,24 +273,32 @@ CheckBox.addEventListener('click', function(e){
 //gestione array di articoli selezionati
 
 //array vuoto di supporto per creare una nuova lista dei clicked bookmarks
-let savedPosts = []
+let savedPosts = [];
 
-allArticles.forEach((selectedPost) => {
-  
-  let selectedBookmark = document.querySelectorAll('.fa-solid.fa-bookmark.fa-xl.mt-3.custom-txt-color');
-  let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
+let selectedBookmark = document.querySelectorAll('.fa-solid.fa-bookmark.fa-xl.mt-3.custom-txt-color');
+let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
+
 //console.log(selectedPost,selectedBookmark, unselectedBookmark);
 let emptyBookmarkList = Array.from(unselectedBookmark);
 console.log(emptyBookmarkList); // trasformo node list in un array che posso utilizzare 
+let fullBookmarkList = Array.from(selectedBookmark);
+//console.log(fullBookmarkList); 
+
+emptyBookmarkList.forEach((selectedPost) => {
+  console.log(selectedPost);
+
+  selectedPost.addEventListener('click', function (e) {
+    console.log('funziona');
+  })
+
 });
 
-for  ( let i = 0 ; i< allArticles.length; i++) {
-
+for (let i = 0; i < allArticles.length; i++) {
 
   let selectedBookmark = document.querySelectorAll('.fa-solid.fa-bookmark.fa-xl.mt-3.custom-txt-color');
   let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
 
-  unselectedBookmark[i].addEventListener('click',function(e){
+  unselectedBookmark[i].addEventListener('click', function (e) {
     //console.log('funziona');
 
     //feedback visivo di 'click' sul bookmark
@@ -299,22 +307,21 @@ for  ( let i = 0 ; i< allArticles.length; i++) {
 
     //pusho i miei click sull'array di supporto
     savedPosts.push(selectedBookmark[i]);
-   
-   
-})
+
+
+  })
 }
 
 
-function keepPostsSaved(ArticlesArray,PostsArray){
-  
-  if (!allArticles.includes(savedPosts)){
+function keepPostsSaved(ArticlesArray, PostsArray) {
+
+  if (!allArticles.includes(savedPosts)) {
     console.log('funziona')
     articleWrapperEL.innerHTML = "";
   }
-  
+
 }
 
 
 
 
- 
