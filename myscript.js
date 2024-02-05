@@ -272,6 +272,8 @@ CheckBox.addEventListener('click', function (e) {
 
 
 //gestione array di articoli selezionati
+//array di supporto per gli id, dopo aver ciclato sugli ID di allArticles, push, questo = il mio secondo termine di paragone 
+let savedId = [];
 
 //array vuoto di supporto per creare una nuova lista dei clicked bookmarks
 let savedPosts = [];
@@ -286,7 +288,9 @@ let fullBookmarkList = Array.from(selectedBookmark);
 //console.log(fullBookmarkList); 
 
 emptyBookmarkList.forEach((selectedPost) => {
-  console.log(selectedPost);
+  //console.log(selectedPost);
+  
+ 
 
   selectedPost.addEventListener('click', function (e) {
     //console.log('funziona');
@@ -296,7 +300,7 @@ emptyBookmarkList.forEach((selectedPost) => {
 
     //pusho i miei click sull'array di supporto
     savedPosts.push(selectedPost);
-    
+
 
   })
 
