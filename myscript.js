@@ -289,7 +289,7 @@ emptyBookmarkList.forEach((selectedPost) => {
   console.log(selectedPost);
 
   selectedPost.addEventListener('click', function (e) {
-    console.log('funziona');
+    //console.log('funziona');
 
     //feedback visivo di 'click' sul bookmark
     selectedPost.classList.add('d-none');
@@ -318,7 +318,6 @@ for (let i = 0; i < allArticles.length; i++) {
 function keepPostsSaved(ArticlesArray, PostsArray) {
 
   if (!allArticles.includes(savedPosts)) {
-    console.log('funziona')
     articleWrapperEL.innerHTML = "";
   }
 
