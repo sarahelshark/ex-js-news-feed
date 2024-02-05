@@ -275,6 +275,15 @@ CheckBox.addEventListener('click', function(e){
 //array vuoto di supporto per creare una nuova lista dei clicked bookmarks
 let savedPosts = []
 
+allArticles.forEach((selectedPost) => {
+  
+  let selectedBookmark = document.querySelectorAll('.fa-solid.fa-bookmark.fa-xl.mt-3.custom-txt-color');
+  let unselectedBookmark = document.querySelectorAll('.fa-regular.fa-bookmark.fa-xl.mt-3.custom-txt-color');
+//console.log(selectedPost,selectedBookmark, unselectedBookmark);
+let emptyBookmarkList = Array.from(unselectedBookmark);
+console.log(emptyBookmarkList); // trasformo node list in un array che posso utilizzare 
+});
+
 for  ( let i = 0 ; i< allArticles.length; i++) {
 
 
