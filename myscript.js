@@ -261,14 +261,12 @@ CheckBox.addEventListener('click', function (e) {
 
   if (savedPosts.length > 0) {
     //console.log('ok')
-    console.log(savedPosts);
+    console.log(savedPosts,savedId);
     //Pulisci il contenuto attuale
-    // keepPostsSaved();
-
+     //keepPostsSaved();
 
   }
 })
-
 
 
 //gestione array di articoli selezionati
