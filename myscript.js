@@ -281,7 +281,10 @@ allArticles.forEach(article => {
   //console.log(clickEl);
   let postClick = document.getElementById(`articleContainer_${article.id}`)
   postClick.addEventListener('click', function (e) {
-    console.log('ok'+clickEl)
+    console.log('ok'+clickEl);
+    savedId.push(clickEl);
+
+    console.log(savedId);
   })
 })
 
